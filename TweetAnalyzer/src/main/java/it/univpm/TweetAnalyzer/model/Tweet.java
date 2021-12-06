@@ -2,19 +2,15 @@ package it.univpm.TweetAnalyzer.model;
 
 public class Tweet {
 
+	private String created_at;
+	private long id;
+	private String text;
 
 	public Tweet() {
-        this.created_at = null;
+		this.created_at = null;
 		this.id = 0;
 		this.text = "";
 	}
-
-
-
-	private String created_at;
-    private long id;
-    private String text;
-
 
 
 	public String getCreated_at() {
