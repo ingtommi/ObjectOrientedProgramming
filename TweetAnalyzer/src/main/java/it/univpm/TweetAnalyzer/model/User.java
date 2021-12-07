@@ -27,5 +27,4 @@ public class User {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-
 }
