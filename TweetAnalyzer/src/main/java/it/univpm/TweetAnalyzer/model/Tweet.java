@@ -8,7 +8,7 @@ public class Tweet {
 	private long id;
 	private String text;
 	private ArrayList<String> hashtags;
-	private String[] coordinates; //[long,lat]
+	private String[] coordinates; //[lon,lat]
 	private String[] place; //[full_name,country_code]
 	
 	public Tweet(String created_at, long id, String text, ArrayList<String> hashtags, String[] coordinates, String[] place) {
