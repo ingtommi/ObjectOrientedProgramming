@@ -1,30 +1,19 @@
 package it.univpm.TweetAnalyzer.model;
 
-public class User {
+public class User extends Model{
 
+	private String name;
 
-	private long id;
-	private String place;
-
-	public User(long id, String place) {
-		super();
-		this.id = id;
-		this.place = place;
+	public User(String created_at, long id, String location, String name) {
+		super(created_at,id,location);
+		this.name = name;
 	}
 
-	public long getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getPlace() {
-		return place;
-	}
-
-	public void setPlace(String place) {
-		this.place = place;
+	public void setName(String name) {
+		this.name = name;
 	}
 }
