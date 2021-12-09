@@ -11,13 +11,11 @@ import it.univpm.TweetAnalyzer.service.APICall;
 @RestController
 public class Controller {
 	
-	//TODO: modellare classi chiamate al posto di NULL
-	
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> getMeta() {
 		
-		APICall ac = new APICall();
-		return new ResponseEntity<>(ac.getMeta(), HttpStatus.OK);
+		APICall call = new APICall();
+		return new ResponseEntity<>(call.getMeta(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/data")
@@ -25,14 +23,14 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
-		APICall ac = new APICall(hashtags,count,lang);
-		return new ResponseEntity<>(ac.getData(), HttpStatus.OK);
+		APICall call = new APICall(hashtags,count,lang);
+		return new ResponseEntity<>(call.getData(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/filter/geo")
 	public ResponseEntity<Object> filter(@RequestParam(name = "long") String lon, @RequestParam(name = "lat") String lat, 
 			@RequestParam(name = "rad") String rad) {
-		
+		//TODO: implementare metodo al posto di NULL
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 }

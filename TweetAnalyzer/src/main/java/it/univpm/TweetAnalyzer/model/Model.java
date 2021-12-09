@@ -1,5 +1,10 @@
 package it.univpm.TweetAnalyzer.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Model {
 	
 	private String created_at;
@@ -35,4 +40,6 @@ public class Model {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	//TODO: trasformare stringa created_at in data
 }
