@@ -1,8 +1,9 @@
 package it.univpm.TweetAnalyzer.model;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class Model {
@@ -41,4 +42,13 @@ public class Model {
 		this.location = location;
 	}
 
+	public LocalDate ParseDataTime() throws ParseException {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+		LocalDateTime dt = LocalDateTime.parse(created_at, formatter);
+		return dt.toLocalDate();
+	}
+	
+	
+	
+	
 }
