@@ -16,22 +16,49 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-
 public class APICall implements APICallService {
 	
 	private static final String apiBase = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?";
 	private String api;
-	private String hashtags;
+	private String ht1,ht2,ht3;
 	private int count;
 	private String lang;
+	private String met;
 	
 	public APICall() {}
 	
-	public APICall(String hashtags, int count, String lang) {
-		this.hashtags = hashtags.replace("#","%23").replaceAll("\\s+",""); //sostituzione in %23 richiesta da URL, rimozione spazi per evitare eccezioni
+	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
+		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
+		if(ht2!=null) {
+			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
+		}
+		if(ht3!=null) {
+			this.ht3 = ht3.replace("#","%23").replaceAll("\\s+","");
+		}
+		this.met = met.toUpperCase();
 		this.count = count;
 		this.lang = lang;
-		this.api = apiBase + "q=" + this.hashtags + "&count=" + this.count + "&lang=" + this.lang;
+	}
+	
+	public String apiBuild() {
+		
+		if(met.equals("AND") || met.equals("OR")) {
+			if(ht2==null && ht3==null) {
+				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
+			}
+			else if(ht3==null) {
+				api = apiBase + "q=" + ht1 + " " + met + " " + ht2 + "&count=" + count +"&lang=" + lang;
+				
+			}
+			else if(ht2==null) {
+				api = apiBase + "q=" + ht1 + " " + met + " " + ht3 + "&count=" + count +"&lang=" + lang;
+			}
+			else {
+				api = apiBase + "q=" + ht1 + " " + met + " " + ht2 + " " + met + " " + ht3 + "&count=" + count +"&lang=" + lang;
+			}
+		}
+		//TODO: inserire eccezione se metodo diverso da AND o OR
+		return api;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -67,9 +94,10 @@ public class APICall implements APICallService {
 		String body = "";
 		String line = "";
 		JSONObject obj = null;
+		System.out.println("\n\n\n"+this.apiBuild()+"\n\n\n");
 		
 		try {
-			URLConnection openConnection = new URL(api).openConnection();
+			URLConnection openConnection = new URL(this.apiBuild()).openConnection();
 			InputStream in = openConnection.getInputStream();
 			BufferedReader buf = new BufferedReader(new InputStreamReader(in));
 			while ((line = buf.readLine()) != null) {
@@ -132,13 +160,13 @@ public class APICall implements APICallService {
 			JSONObject prop = new JSONObject();
 			JSONObject user = new JSONObject();
 			
-			tweet.put("created_at",tweets.get(k).getCreated_at());
+			tweet.put("created_at",tweets.get(k).parseData());
 			tweet.put("id",tweets.get(k).getId());
 			tweet.put("location",tweets.get(k).getLocation());
 			tweet.put("hashtags",tweets.get(k).getHashtags());
 			prop.put("tweet",tweet);
 
-			user.put("created_at",users.get(k).getCreated_at());
+			user.put("created_at",users.get(k).parseData());
 			user.put("id",users.get(k).getId());
 			user.put("name",users.get(k).getName());
 			user.put("location",users.get(k).getLocation());
