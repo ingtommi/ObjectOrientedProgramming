@@ -40,6 +40,5 @@ public class Model {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	//TODO: trasformare stringa created_at in data
+
 }
