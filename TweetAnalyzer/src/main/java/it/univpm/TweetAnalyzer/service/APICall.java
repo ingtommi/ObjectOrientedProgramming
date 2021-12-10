@@ -25,6 +25,9 @@ public class APICall implements APICallService {
 	private String lang;
 	private String met;
 	
+	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+	ArrayList<User> users = new ArrayList<User>();
+	
 	public APICall() {}
 	
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
@@ -40,26 +43,8 @@ public class APICall implements APICallService {
 		this.lang = lang;
 	}
 	
-	public String apiBuild() {
-		
-		if(met.equals("AND") || met.equals("OR")) {
-			if(ht2==null && ht3==null) {
-				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
-			}
-			else if(ht3==null) {
-				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "&count=" + count +"&lang=" + lang;
-				
-			}
-			else if(ht2==null) {
-				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
-			}
-			else {
-				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
-			}
-		}
-		//TODO: inserire eccezione se metodo diverso da AND o OR
-		return api;
-	}
+	public ArrayList<Tweet> getTweets() { return tweets; }
+	public ArrayList<User> getUsers() { return users; }
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject getMeta() {
@@ -88,6 +73,27 @@ public class APICall implements APICallService {
 		return meta;
 	}
 	
+	public String apiBuild() {
+		
+		if(met.equals("AND") || met.equals("OR")) {
+			if(ht2==null && ht3==null) {
+				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
+			}
+			else if(ht3==null) {
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "&count=" + count +"&lang=" + lang;
+				
+			}
+			else if(ht2==null) {
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
+			}
+			else {
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
+			}
+		}
+		//TODO: inserire eccezione se metodo diverso da AND o OR
+		return api;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public JSONObject getData() {
 		
@@ -110,9 +116,6 @@ public class APICall implements APICallService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-		ArrayList<User> users = new ArrayList<User>();
 		
 		//TODO: lanciare eccezione se status/hashtags = []
 		JSONArray statuses = (JSONArray) obj.get("statuses");

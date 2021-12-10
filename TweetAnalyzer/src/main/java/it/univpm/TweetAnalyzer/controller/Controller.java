@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
+import it.univpm.TweetAnalyzer.stats.DailyStats;
 
 @RestController
 public class Controller {
@@ -19,8 +21,8 @@ public class Controller {
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> getMeta() {
 		
-		APICall call = new APICall();
-		return new ResponseEntity<>(call.getMeta(), HttpStatus.OK);
+		APICall ac = new APICall();
+		return new ResponseEntity<>(ac.getMeta(), HttpStatus.OK);
 	}
 	
 	//TODO: lanciare eccezioni quando mancano parametri
@@ -35,8 +37,8 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
-		APICall call = new APICall(ht1,ht2,ht3,met,lang,count);
-		return new ResponseEntity<>(call.getData(), HttpStatus.OK);
+		APICall ac = new APICall(ht1,ht2,ht3,met,lang,count);
+		return new ResponseEntity<>(ac.getData(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/tweet/filter/day")
@@ -46,7 +48,8 @@ public class Controller {
 			@RequestParam(name = "year") int year) {
 		
 		LocalDate date = LocalDate.of(year,Month.of(month),day);
-		return new ResponseEntity<>(date, HttpStatus.OK);
+		DailyFilter df = new DailyFilter(date,.getDatatime());
+		return new ResponseEntity<>(df., HttpStatus.OK);
 	}
 	
 	//@PostMapping(value = "/tweet/filter/geo")
@@ -58,7 +61,8 @@ public class Controller {
 			@RequestParam(name = "year") int year) {
 		
 		LocalDate date = LocalDate.of(year,Month.of(month),day);
-		return new ResponseEntity<>(date, HttpStatus.OK);
+		DailyStats ds = new DailyStats(date,.getDatatime());
+		return new ResponseEntity<>(ds., HttpStatus.OK);
 	}
 	
 	//@PostMapping(value = "/tweet/stats/geo")
