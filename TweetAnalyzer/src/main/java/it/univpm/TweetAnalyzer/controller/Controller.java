@@ -19,9 +19,11 @@ public class Controller {
 		return new ResponseEntity<>(call.getMeta(), HttpStatus.OK);
 	}
 	
-	//method = and/or
-	@GetMapping(value = "/tweet/data/{method}")
-	public ResponseEntity<Object> getData(
+	//TODO: lanciare eccezioni quando mancano parametri
+	
+	//visti i problemi delle API per la restituzione degli hashtags il filtraggio viene fatto direttamente qua
+	@GetMapping(value = "/tweet/data/{method}") //method = and/or
+	public ResponseEntity<Object> getData (
 			@PathVariable(name = "method") String met,
 			@RequestParam(name = "hashtag1") String ht1,
 			@RequestParam(name = "hashtag2", required = false) String ht2,
@@ -33,12 +35,13 @@ public class Controller {
 		return new ResponseEntity<>(call.getData(), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/tweet/filter/geo")
-	public ResponseEntity<Object> filter(@RequestParam(name = "long") String lon,  
-			@RequestParam(name = "lat") String lat, 
-			@RequestParam(name = "rad") String rad) {
-		
-		//TODO: implementare metodo al posto di NULL
-		return new ResponseEntity<>(null, HttpStatus.OK);
-	}
+	/*
+	@PostMapping(value = "/tweet/filter/geo")
+	
+	@PostMapping(value = "/tweet/filter/day")
+	
+	@PostMapping(value = "/tweet/stats/geo")
+	
+	@PostMapping(value = "/tweet/stats/day")
+	*/
 }
