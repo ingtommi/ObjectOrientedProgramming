@@ -1,5 +1,9 @@
 package it.univpm.TweetAnalyzer.model;
 
+<<<<<<< HEAD
+=======
+import java.text.ParseException;
+>>>>>>> 64254ac7266382251bd06d42c4b89b590268bd18
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -41,6 +45,7 @@ public class Model {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+<<<<<<< HEAD
 	
 	public LocalDate parseData() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
@@ -48,4 +53,16 @@ public class Model {
 		datatime = dt.toLocalDate();
 		return datatime;
 	}
+=======
+
+	public LocalDate ParseDataTime() throws ParseException {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+		LocalDateTime dt = LocalDateTime.parse(created_at, formatter);
+		return dt.toLocalDate();
+	}
+	
+	
+	
+	
+>>>>>>> 64254ac7266382251bd06d42c4b89b590268bd18
 }
