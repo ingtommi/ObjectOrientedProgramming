@@ -47,14 +47,14 @@ public class APICall implements APICallService {
 				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
 			}
 			else if(ht3==null) {
-				api = apiBase + "q=" + ht1 + " " + met + " " + ht2 + "&count=" + count +"&lang=" + lang;
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "&count=" + count +"&lang=" + lang;
 				
 			}
 			else if(ht2==null) {
-				api = apiBase + "q=" + ht1 + " " + met + " " + ht3 + "&count=" + count +"&lang=" + lang;
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
 			}
 			else {
-				api = apiBase + "q=" + ht1 + " " + met + " " + ht2 + " " + met + " " + ht3 + "&count=" + count +"&lang=" + lang;
+				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
 			}
 		}
 		//TODO: inserire eccezione se metodo diverso da AND o OR
