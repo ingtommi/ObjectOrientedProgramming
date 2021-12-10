@@ -9,7 +9,6 @@ public class DailyFilter {
 	
 	private LocalDate date;
 	private ArrayList<Tweet> tweets;
-	private int tot;
 	
 	public DailyFilter (LocalDate date, ArrayList<Tweet> tweets) {
 		this.date = date;
