@@ -48,4 +48,24 @@ public class Model {
 		datatime = dt.toLocalDate();
 		return datatime;
 	}
+	
+	//ritorna il giorno della data ottenuta precedentemente
+	public int getDay() {
+		return this.datatime.getDayOfMonth();
+	}
+	
+	//ritorna il mese
+	public int getMonth() {
+		return this.datatime.getMonthValue();
+	}
+	
+	
+	//ritorna l'anno
+	public int getYear() {
+		return this.datatime.getYear();
+	}
+	
+	
+	
+	
 }
