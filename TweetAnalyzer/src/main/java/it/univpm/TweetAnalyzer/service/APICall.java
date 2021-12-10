@@ -35,7 +35,7 @@ public class APICall implements APICallService {
 		if(ht3!=null) {
 			this.ht3 = ht3.replace("#","%23").replaceAll("\\s+","");
 		}
-		this.met = met.toUpperCase();
+		this.met = met.toUpperCase(); //url richiede AND/OR			
 		this.count = count;
 		this.lang = lang;
 	}
@@ -111,11 +111,11 @@ public class APICall implements APICallService {
 			e.printStackTrace();
 		}
 		
-		//TODO: lanciare eccezione se status/hashtags = []
 		ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 		ArrayList<User> users = new ArrayList<User>();
-		JSONArray statuses = (JSONArray) obj.get("statuses");
 		
+		//TODO: lanciare eccezione se status/hashtags = []
+		JSONArray statuses = (JSONArray) obj.get("statuses");
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
 			//TWEET INFO

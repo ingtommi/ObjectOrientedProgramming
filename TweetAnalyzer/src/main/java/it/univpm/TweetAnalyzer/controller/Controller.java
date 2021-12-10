@@ -1,9 +1,13 @@
 package it.univpm.TweetAnalyzer.controller;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +27,7 @@ public class Controller {
 	
 	//visti i problemi delle API per la restituzione degli hashtags il filtraggio viene fatto direttamente qua
 	@GetMapping(value = "/tweet/data/{method}") //method = and/or
-	public ResponseEntity<Object> getData (
+	public ResponseEntity<Object> getData(
 			@PathVariable(name = "method") String met,
 			@RequestParam(name = "hashtag1") String ht1,
 			@RequestParam(name = "hashtag2", required = false) String ht2,
@@ -35,13 +39,27 @@ public class Controller {
 		return new ResponseEntity<>(call.getData(), HttpStatus.OK);
 	}
 	
-	/*
-	@PostMapping(value = "/tweet/filter/geo")
-	
 	@PostMapping(value = "/tweet/filter/day")
+	public ResponseEntity<Object> dayfilter(
+			@RequestParam(name = "day") int day,
+			@RequestParam(name = "month") int month,
+			@RequestParam(name = "year") int year) {
+		
+		LocalDate date = LocalDate.of(year,Month.of(month),day);
+		return new ResponseEntity<>(date, HttpStatus.OK);
+	}
 	
-	@PostMapping(value = "/tweet/stats/geo")
+	//@PostMapping(value = "/tweet/filter/geo")
 	
 	@PostMapping(value = "/tweet/stats/day")
-	*/
+	public ResponseEntity<Object> daystats(
+			@RequestParam(name = "day") int day,
+			@RequestParam(name = "month") int month,
+			@RequestParam(name = "year") int year) {
+		
+		LocalDate date = LocalDate.of(year,Month.of(month),day);
+		return new ResponseEntity<>(date, HttpStatus.OK);
+	}
+	
+	//@PostMapping(value = "/tweet/stats/geo")
 }
