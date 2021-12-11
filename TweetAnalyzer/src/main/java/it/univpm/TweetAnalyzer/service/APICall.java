@@ -100,7 +100,6 @@ public class APICall {
 		String body = "";
 		String line = "";
 		JSONObject obj = null;
-		System.out.println("\n\n\n"+this.apiBuild()+"\n\n\n");
 		
 		try {
 			URLConnection openConnection = new URL(this.apiBuild()).openConnection();

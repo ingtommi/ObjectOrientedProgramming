@@ -18,11 +18,13 @@ import it.univpm.TweetAnalyzer.stats.DailyStats;
 @RestController
 public class Controller {
 	
+	APICall metacall,datacall;
+	
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> getMeta() {
 		
-		APICall ac = new APICall();
-		return new ResponseEntity<>(ac.getMeta(), HttpStatus.OK);
+		metacall = new APICall();
+		return new ResponseEntity<>(metacall.getMeta(), HttpStatus.OK);
 	}
 	
 	//TODO: lanciare eccezioni quando mancano parametri
@@ -37,32 +39,40 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
-		APICall ac = new APICall(ht1,ht2,ht3,met,lang,count);
-		return new ResponseEntity<>(ac.getData(), HttpStatus.OK);
+		datacall = new APICall(ht1,ht2,ht3,met,lang,count);
+		return new ResponseEntity<>(datacall.getData(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/tweet/filter/day")
 	public ResponseEntity<Object> dayfilter(
-			@RequestParam(name = "day") int day,
-			@RequestParam(name = "month") int month,
-			@RequestParam(name = "year") int year) {
+			@RequestParam(name = "day", required = false) Integer day, //utilizzo Integer perchè posso controllare se null
+			@RequestParam(name = "month", required = false) Integer month,
+			@RequestParam(name = "year", required = false) Integer year) {
 		
-		LocalDate date = LocalDate.of(year,Month.of(month),day);
-		DailyFilter df = new DailyFilter(date,.getDatatime());
-		return new ResponseEntity<>(df., HttpStatus.OK);
+		LocalDate date;
+		if(day == null || month == null || year == null) {
+			date = LocalDate.now();
+		}
+		else date = LocalDate.of(year,Month.of(month),day);
+		DailyFilter df = new DailyFilter(date,datacall.getTweets());
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
 	//@PostMapping(value = "/tweet/filter/geo")
 	
 	@PostMapping(value = "/tweet/stats/day")
 	public ResponseEntity<Object> daystats(
-			@RequestParam(name = "day") int day,
-			@RequestParam(name = "month") int month,
-			@RequestParam(name = "year") int year) {
+			@RequestParam(name = "day", required = false) Integer day,
+			@RequestParam(name = "month", required = false) Integer month,
+			@RequestParam(name = "year", required = false) Integer year) {
 		
-		LocalDate date = LocalDate.of(year,Month.of(month),day);
-		DailyStats ds = new DailyStats(date,.getDatatime());
-		return new ResponseEntity<>(ds., HttpStatus.OK);
+		LocalDate date;
+		if(day == null || month == null || year == null) {
+			date = LocalDate.now();
+		}
+		else date = LocalDate.of(year,Month.of(month),day);
+		DailyStats ds = new DailyStats(date,datacall.getTweets());
+		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
 	}
 	
 	//@PostMapping(value = "/tweet/stats/geo")
