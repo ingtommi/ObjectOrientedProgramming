@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
+import it.univpm.TweetAnalyzer.service.GetData;
 import it.univpm.TweetAnalyzer.stats.DailyStats;
 
 @RestController
 public class Controller {
 	
-	APICall metacall,datacall;
+	APICall datacall;
 	
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> getMeta() {
 		
-		metacall = new APICall();
-		return new ResponseEntity<>(metacall.getMeta(), HttpStatus.OK);
+		GetData meta = new GetData();
+		return new ResponseEntity<>(meta.seeMeta(), HttpStatus.OK);
 	}
 	
 	//TODO: lanciare eccezioni quando mancano parametri
@@ -40,7 +41,7 @@ public class Controller {
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
 		datacall = new APICall(ht1,ht2,ht3,met,lang,count);
-		return new ResponseEntity<>(datacall.getData(), HttpStatus.OK);
+		return new ResponseEntity<>(datacall.saveData(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/tweet/filter/day")

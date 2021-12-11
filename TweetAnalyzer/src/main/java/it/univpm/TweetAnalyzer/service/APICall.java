@@ -28,8 +28,6 @@ public class APICall {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 	
-	public APICall() {}
-	
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {
@@ -45,33 +43,6 @@ public class APICall {
 	
 	public ArrayList<Tweet> getTweets() { return tweets; }
 	public ArrayList<User> getUsers() { return users; }
-	
-	@SuppressWarnings("unchecked")
-	public JSONObject getMeta() {
-		
-		JSONObject meta = new JSONObject();
-		JSONArray list = new JSONArray();
-		JSONObject prop = new JSONObject();
-		JSONObject tweet = new JSONObject();
-		JSONObject user = new JSONObject();
-		
-		tweet.put("created_at","String");
-		tweet.put("id","long");
-		tweet.put("location","String");
-		tweet.put("hashtags","ArrayList<String>");
-		prop.put("tweet",tweet);
-		
-		user.put("created_at","String");
-		user.put("id","long");
-		user.put("name","String");
-		user.put("location","String");
-		prop.put("user",user);
-		
-		list.add(prop);
-		meta.put("list",prop);
-		
-		return meta;
-	}
 	
 	public String apiBuild() {
 		
@@ -95,7 +66,7 @@ public class APICall {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public JSONObject getData() {
+	public saveData() {
 		
 		String body = "";
 		String line = "";
@@ -150,33 +121,5 @@ public class APICall {
             User us = new User(userDate,userId,userLocation,userName);
             users.add(us);
         }
-		
-		JSONObject data = new JSONObject();
-		JSONArray list = new JSONArray();
-		
-		//per ogni tweet viene generato un JSONObject "prop" da mettere dentro un JSONArray "list"
-		//contenuto dentro un JSONObject "data" che viene poi ritornato
-		for(int k=0; k<statuses.size(); k++) {
-			//definiti dentro perchè altrimenti c'erano problemi di sovrascrizione
-			JSONObject tweet = new JSONObject();
-			JSONObject prop = new JSONObject();
-			JSONObject user = new JSONObject();
-			
-			tweet.put("created_at",tweets.get(k).parseData());
-			tweet.put("id",tweets.get(k).getId());
-			tweet.put("location",tweets.get(k).getLocation());
-			tweet.put("hashtags",tweets.get(k).getHashtags());
-			prop.put("tweet",tweet);
-
-			user.put("created_at",users.get(k).parseData());
-			user.put("id",users.get(k).getId());
-			user.put("name",users.get(k).getName());
-			user.put("location",users.get(k).getLocation());
-			prop.put("user",user);
-
-			list.add(prop);
-		}
-		data.put("list",list);
-		return data;
 	}
 }
