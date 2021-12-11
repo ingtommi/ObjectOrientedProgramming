@@ -69,8 +69,7 @@ public class APICall {
 		return api;
 	}
 
-	@SuppressWarnings("unchecked")
-	public JSONObject saveData() {
+	public String saveData() {
 
 		String body = "";
 		String line = "";
@@ -125,11 +124,7 @@ public class APICall {
 			User us = new User(userDate,userId,userLocation,userName);
 			users.add(us);
 		}
-		
-		JSONObject mex = new JSONObject();
-		mex.put("Message","tweets saved: see at http://localhost:8080/tweet/data");
-
-		return mex;
+		return "TWEETS SAVED: see at http://localhost:8080/tweet/data";
 	}
 	
 	//trasformo stringa data in formato LocalDate
