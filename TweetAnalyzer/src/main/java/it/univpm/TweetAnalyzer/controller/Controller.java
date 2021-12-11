@@ -19,6 +19,9 @@ import it.univpm.TweetAnalyzer.stats.DailyStats;
 @RestController
 public class Controller {
 	
+	APICall call;
+	GetData data;
+	
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> seeMeta() {
 		
@@ -29,7 +32,8 @@ public class Controller {
 	@GetMapping(value = "/tweet/data")
 	public ResponseEntity<Object> seeData() {
 		
-		
+		//TODO: eccezione se non è stato ancora chiamato /tweet/get
+		data = new GetData(call.getList());
 		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
 	}
 	
@@ -45,7 +49,7 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
-		APICall call = new APICall(ht1,ht2,ht3,met,lang,count);
+		call = new APICall(ht1,ht2,ht3,met,lang,count);
 		return new ResponseEntity<>(call.saveData(), HttpStatus.OK);
 	}
 	
@@ -60,7 +64,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyFilter df = new DailyFilter(date,.getTweets());
+		DailyFilter df = new DailyFilter(date,data.getTweets());
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
@@ -77,7 +81,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyStats ds = new DailyStats(date,.getTweets());
+		DailyStats ds = new DailyStats(date,data.getTweets());
 		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
 	}
 	

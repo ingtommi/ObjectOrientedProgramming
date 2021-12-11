@@ -1,11 +1,28 @@
 package it.univpm.TweetAnalyzer.service;
 
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import it.univpm.TweetAnalyzer.model.Tweet;
+import it.univpm.TweetAnalyzer.model.User;
+
 public class GetData {
 	
+	private ArrayList<Tweet> tweets;
+	private ArrayList<User> users;
+	
 	public GetData() {}
+	
+	@SuppressWarnings("unchecked")
+	public GetData(Object[] list) {
+		this.tweets = (ArrayList<Tweet>) list[0];
+		this.users = (ArrayList<User>) list[1];
+	}
+	
+	public ArrayList<Tweet> getTweets() { return tweets; }
+	public ArrayList<User> getUsers() { return users; }
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject seeMeta() {
