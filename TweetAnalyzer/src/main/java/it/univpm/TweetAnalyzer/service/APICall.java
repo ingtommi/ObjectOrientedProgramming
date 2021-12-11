@@ -27,7 +27,6 @@ public class APICall {
 
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
-	Object[] list = new Object[2];
 
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
@@ -41,9 +40,10 @@ public class APICall {
 		this.count = count;
 		this.lang = lang;
 	}
-
-	public Object[] getList() { return this.list; }
 	
+	public ArrayList<Tweet> getTweets() { return tweets; }
+	public ArrayList<User> getUsers() { return users; }
+
 	public String apiBuild() {
 
 		if(met.equals("AND") || met.equals("OR")) {
@@ -121,8 +121,6 @@ public class APICall {
 			User us = new User(userDate,userId,userLocation,userName);
 			users.add(us);
 		}
-		list[0] = tweets;
-		list[1] = users;
 		
 		JSONObject mex = new JSONObject();
 		mex.put("Message","tweets saved: see at http://localhost:8080/tweet/data");

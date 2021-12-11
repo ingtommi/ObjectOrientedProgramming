@@ -15,12 +15,12 @@ import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
 import it.univpm.TweetAnalyzer.service.GetData;
 import it.univpm.TweetAnalyzer.stats.DailyStats;
+import it.univpm.TweetAnalyzer.stats.HashStats;
 
 @RestController
 public class Controller {
 	
 	APICall call;
-	GetData data;
 	
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> seeMeta() {
@@ -33,7 +33,7 @@ public class Controller {
 	public ResponseEntity<Object> seeData() {
 		
 		//TODO: eccezione se non è stato ancora chiamato /tweet/get
-		data = new GetData(call.getList());
+		GetData data = new GetData(call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
 	}
 	
@@ -64,7 +64,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyFilter df = new DailyFilter(date,data.getTweets());
+		DailyFilter df = new DailyFilter(date,call.getTweets());
 		return new ResponseEntity<>(df.dayfilter(), HttpStatus.OK);
 	}
 	
@@ -81,7 +81,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyStats ds = new DailyStats(date,data.getTweets());
+		DailyStats ds = new DailyStats(date,call.getTweets());
 		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
 	}
 	
@@ -90,8 +90,7 @@ public class Controller {
 	@PostMapping(value = "/tweet/stats/hash")
 	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag") String hashtag) {
 		
-		
-		return new ResponseEntity<>(null, HttpStatus.OK);
-	}
-			
+		HashStats hs = new HashStats(hashtag,call.getTweets());
+		return new ResponseEntity<>(hs.hashstats(), HttpStatus.OK);
+	}		
 }

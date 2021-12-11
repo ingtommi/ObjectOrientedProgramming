@@ -11,11 +11,5 @@ public class Tweet extends Model {
 		this.hashtags = hashtags;
 	}
 
-	public ArrayList<String> getHashtags() {
-		return hashtags;
-	}
-
-	public void setHashtags(ArrayList<String> hashtags) {
-		this.hashtags = hashtags;
-	}
+	public ArrayList<String> getHashtags() { return hashtags; }
 }

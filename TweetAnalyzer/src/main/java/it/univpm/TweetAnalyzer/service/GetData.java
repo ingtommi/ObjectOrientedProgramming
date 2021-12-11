@@ -15,14 +15,10 @@ public class GetData {
 	
 	public GetData() {}
 	
-	@SuppressWarnings("unchecked")
-	public GetData(Object[] list) {
-		this.tweets = (ArrayList<Tweet>) list[0];
-		this.users = (ArrayList<User>) list[1];
+	public GetData(ArrayList<Tweet> tweets, ArrayList<User> users) {
+		this.tweets = tweets;
+		this.users = users;
 	}
-	
-	public ArrayList<Tweet> getTweets() { return tweets; }
-	public ArrayList<User> getUsers() { return users; }
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject seeMeta() {

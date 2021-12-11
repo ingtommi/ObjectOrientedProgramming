@@ -21,10 +21,10 @@ public class HashStats {
 
 	@SuppressWarnings("unchecked")
 	public JSONObject hashstats() {
-		for(Tweet tweet : tweets){
+		for(Tweet tweet : tweets) {
 			for(String hash : tweet.getHashtags()) {
 				if(hash.equals(hashtag)) {
-					count ++;
+					count++;
 				} 
 			}
 		}
@@ -34,7 +34,7 @@ public class HashStats {
 		JSONObject out = new JSONObject();
 
 		obj.put("Tweets downloaded", tweets.size());
-		obj.put("Tweets containing" + hashtag, count);
+		obj.put("Tweets containing #" + hashtag, count);
 
 		arr.add(obj);
 		out.put("Stats", obj);

@@ -19,13 +19,9 @@ public class Model {
 	}
 
 	public String getCreated_at() { return created_at; }
-	public void setCreated_at(String created_at) { this.created_at = created_at; }
 	public long getId() { return id; }
-	public void setId(long id) { this.id = id; }
 	public String getLocation() { return location; }
-	public void setLocation(String location) { this.location = location; }
 	public LocalDate getDatatime() { return datatime; }
-	public void setDatatime(LocalDate datatime) { this.datatime = datatime; }
 
 	public LocalDate parseData() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
