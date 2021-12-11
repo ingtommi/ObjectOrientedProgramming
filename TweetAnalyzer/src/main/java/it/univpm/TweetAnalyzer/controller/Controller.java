@@ -65,7 +65,7 @@ public class Controller {
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
 		DailyFilter df = new DailyFilter(date,data.getTweets());
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		return new ResponseEntity<>(df.dayfilter(), HttpStatus.OK);
 	}
 	
 	//@PostMapping(value = "/tweet/filter/geo")
@@ -86,4 +86,12 @@ public class Controller {
 	}
 	
 	//@PostMapping(value = "/tweet/stats/geo")
+	
+	@PostMapping(value = "/tweet/stats/hash")
+	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag") String hashtag) {
+		
+		
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+			
 }
