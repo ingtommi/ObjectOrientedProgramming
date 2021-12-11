@@ -1,5 +1,8 @@
 package it.univpm.TweetAnalyzer.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 public class MissingParametersException extends Exception {
 
 	private static final long serialVersionUID = 1L;
@@ -9,7 +12,7 @@ public class MissingParametersException extends Exception {
 	}
 
 	//ritorna messaggio di errore
-	public String getErr() {
-		return "ERRORE: Alcuni paramentri non sono presenti!";
+	public ResponseEntity<Object> getErr() {
+		return new ResponseEntity<>("ERROR: missing parameters!", HttpStatus.BAD_REQUEST);
 	}
 }
