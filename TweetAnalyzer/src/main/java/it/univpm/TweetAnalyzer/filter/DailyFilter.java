@@ -28,7 +28,7 @@ public class DailyFilter {
 			JSONObject tweet = null;
 			if(tweets.get(i).getDatatime().compareTo(date)==0) {
 				tweet = new JSONObject();
-				tweet.put("created_at",tweets.get(i).parseData());
+				tweet.put("created_at",tweets.get(i).getDatatime());
 				tweet.put("id",tweets.get(i).getId());
 				tweet.put("location",tweets.get(i).getLocation());
 				tweet.put("hashtags",tweets.get(i).getHashtags());

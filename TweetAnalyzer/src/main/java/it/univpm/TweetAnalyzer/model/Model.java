@@ -7,26 +7,17 @@ import java.util.Locale;
 
 public class Model {
 	
-	private String created_at;
+	private LocalDate date;
 	private long id;
 	private String location;
-	private LocalDate datatime = null;
 	
-	public Model(String created_at, long id, String location) {
-		this.created_at = created_at;
+	public Model(LocalDate date, long id, String location) {
+		this.date = date;
 		this.id = id;
 		this.location = location;
 	}
 
-	public String getCreated_at() { return created_at; }
+	public LocalDate getDatatime() { return date; }
 	public long getId() { return id; }
 	public String getLocation() { return location; }
-	public LocalDate getDatatime() { return datatime; }
-
-	public LocalDate parseData() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
-		LocalDateTime dt = LocalDateTime.parse(created_at, formatter);
-		datatime = dt.toLocalDate();
-		return datatime;
-	}
 }

@@ -28,7 +28,6 @@ public class HashStats {
 				} 
 			}
 		}
-
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
 		JSONObject out = new JSONObject();

@@ -61,13 +61,13 @@ public class GetData {
 			JSONObject prop = new JSONObject();
 			JSONObject user = new JSONObject();
 			
-			tweet.put("created_at",tweets.get(k).parseData());
+			tweet.put("created_at",tweets.get(k).getDatatime());
 			tweet.put("id",tweets.get(k).getId());
 			tweet.put("location",tweets.get(k).getLocation());
 			tweet.put("hashtags",tweets.get(k).getHashtags());
 			prop.put("tweet",tweet);
 
-			user.put("created_at",users.get(k).parseData());
+			user.put("created_at",users.get(k).getDatatime());
 			user.put("id",users.get(k).getId());
 			user.put("name",users.get(k).getName());
 			user.put("location",users.get(k).getLocation());

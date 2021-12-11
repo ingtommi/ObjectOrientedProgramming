@@ -9,7 +9,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -92,7 +96,7 @@ public class APICall {
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
 			//TWEET INFO
-			String tweetDate = (String) tweet.get("created_at");
+			LocalDate tweetDate = this.parseData((String) tweet.get("created_at"));
 			Long tweetId = (Long) tweet.get("id");
 			String tweetLocation = (String) tweet.get("place");
 
@@ -110,7 +114,7 @@ public class APICall {
 
 			//USER INFO
 			JSONObject user = (JSONObject) tweet.get("user");
-			String userDate = (String) user.get("created_at");
+			LocalDate userDate = this.parseData((String) user.get("created_at"));
 			Long userId = (Long) user.get("id");
 			String userLocation = (String) user.get("location");
 			//imposto a null per avere uniformità con tweetLocation
@@ -126,5 +130,14 @@ public class APICall {
 		mex.put("Message","tweets saved: see at http://localhost:8080/tweet/data");
 
 		return mex;
+	}
+	
+	//trasformo stringa data in formato LocalDate
+	public LocalDate parseData(String created_at) {
+		LocalDate date;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+		LocalDateTime dt = LocalDateTime.parse(created_at, formatter);
+		date = dt.toLocalDate();
+		return date;
 	}
 }
