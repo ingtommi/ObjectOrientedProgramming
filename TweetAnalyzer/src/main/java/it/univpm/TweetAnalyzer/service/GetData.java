@@ -34,32 +34,35 @@ public class GetData {
 		return meta;
 	}
 
-	JSONObject data = new JSONObject();
-	JSONArray list = new JSONArray();
-	
-	//per ogni tweet viene generato un JSONObject "prop" da mettere dentro un JSONArray "list"
-	//contenuto dentro un JSONObject "data" che viene poi ritornato
-	for(int k=0; k<statuses.size(); k++) {
-		//definiti dentro perchè altrimenti c'erano problemi di sovrascrizione
-		JSONObject tweet = new JSONObject();
-		JSONObject prop = new JSONObject();
-		JSONObject user = new JSONObject();
+	@SuppressWarnings("unchecked")
+	public JSONObject seeData() {
 		
-		tweet.put("created_at",tweets.get(k).parseData());
-		tweet.put("id",tweets.get(k).getId());
-		tweet.put("location",tweets.get(k).getLocation());
-		tweet.put("hashtags",tweets.get(k).getHashtags());
-		prop.put("tweet",tweet);
+		JSONObject data = new JSONObject();
+		JSONArray list = new JSONArray();
+		
+		//per ogni tweet viene generato un JSONObject "prop" da mettere dentro un JSONArray "list"
+		//contenuto dentro un JSONObject "data" che viene poi ritornato
+		for(int k=0; k<tweets.size(); k++) {
 
-		user.put("created_at",users.get(k).parseData());
-		user.put("id",users.get(k).getId());
-		user.put("name",users.get(k).getName());
-		user.put("location",users.get(k).getLocation());
-		prop.put("user",user);
+			JSONObject tweet = new JSONObject();
+			JSONObject prop = new JSONObject();
+			JSONObject user = new JSONObject();
+			
+			tweet.put("created_at",tweets.get(k).parseData());
+			tweet.put("id",tweets.get(k).getId());
+			tweet.put("location",tweets.get(k).getLocation());
+			tweet.put("hashtags",tweets.get(k).getHashtags());
+			prop.put("tweet",tweet);
 
-		list.add(prop);
+			user.put("created_at",users.get(k).parseData());
+			user.put("id",users.get(k).getId());
+			user.put("name",users.get(k).getName());
+			user.put("location",users.get(k).getLocation());
+			prop.put("user",user);
+
+			list.add(prop);
+		}
+		data.put("list",list);
+		return data;
 	}
-	data.put("list",list);
-	return data;
-}
 }

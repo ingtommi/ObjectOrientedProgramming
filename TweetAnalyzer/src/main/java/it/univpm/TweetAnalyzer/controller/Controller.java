@@ -19,19 +19,24 @@ import it.univpm.TweetAnalyzer.stats.DailyStats;
 @RestController
 public class Controller {
 	
-	APICall datacall;
-	
 	@GetMapping(value = "/tweet/metadata")
-	public ResponseEntity<Object> getMeta() {
+	public ResponseEntity<Object> seeMeta() {
 		
 		GetData meta = new GetData();
 		return new ResponseEntity<>(meta.seeMeta(), HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/tweet/data")
+	public ResponseEntity<Object> seeData() {
+		
+		
+		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
+	}
+	
 	//TODO: lanciare eccezioni quando mancano parametri
 	
 	//visti i problemi delle API per la restituzione degli hashtags il filtraggio viene fatto direttamente qua
-	@GetMapping(value = "/tweet/data/{method}") //method = and/or
+	@GetMapping(value = "/tweet/get/{method}") //method = and/or
 	public ResponseEntity<Object> getData(
 			@PathVariable(name = "method") String met,
 			@RequestParam(name = "hashtag1") String ht1,
@@ -40,8 +45,8 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) {
 		
-		datacall = new APICall(ht1,ht2,ht3,met,lang,count);
-		return new ResponseEntity<>(datacall.saveData(), HttpStatus.OK);
+		APICall call = new APICall(ht1,ht2,ht3,met,lang,count);
+		return new ResponseEntity<>(call.saveData(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/tweet/filter/day")
@@ -55,7 +60,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyFilter df = new DailyFilter(date,datacall.getTweets());
+		DailyFilter df = new DailyFilter(date,.getTweets());
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
@@ -72,7 +77,7 @@ public class Controller {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
-		DailyStats ds = new DailyStats(date,datacall.getTweets());
+		DailyStats ds = new DailyStats(date,.getTweets());
 		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
 	}
 	
