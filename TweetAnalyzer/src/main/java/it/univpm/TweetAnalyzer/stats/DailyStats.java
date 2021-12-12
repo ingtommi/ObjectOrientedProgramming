@@ -2,9 +2,7 @@ package it.univpm.TweetAnalyzer.stats;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import java.util.HashMap;
 
 import it.univpm.TweetAnalyzer.model.Tweet;
 
@@ -20,9 +18,8 @@ public class DailyStats {
 		this.date = date;
 		this.tweets = tweets;
 	}
-	
-	@SuppressWarnings("unchecked")
-	public JSONObject daystats() {
+
+	public HashMap<String,Float> daystats() {
 		for(Tweet tweet : tweets) {
 			if(tweet.getDatatime().compareTo(date)==0) {
 				day1++;
@@ -34,17 +31,12 @@ public class DailyStats {
 				day3++;
 			}
 		}
-		JSONObject obj = new JSONObject();
-		JSONArray arr = new JSONArray();
-		JSONObject out = new JSONObject();
-		
-		obj.put("Tweets downloaded", tweets.size());
-		obj.put("Tweets written on " + date, day1);
-		obj.put("Tweets written on " + date.minusDays(1), day2);
-		obj.put("Tweets written on " + date.minusDays(2), day3);
-		arr.add(obj);
-		out.put("Stats", obj);
-		
-		return out;
+		HashMap<String, Float> out = new HashMap<String, Float>();
+		out.put("Total tweets downloaded", (float) tweets.size());
+		out.put("Tweets written on " + date, (float) day1);
+		out.put("Tweets written on " + date.minusDays(1), (float) day2);
+		out.put("Tweets written on " + date.minusDays(2), (float) day3);
+		out.put("Percentage", 100*(float) (day1+day2+day3)/tweets.size());
+		return out;		
 	}
 }

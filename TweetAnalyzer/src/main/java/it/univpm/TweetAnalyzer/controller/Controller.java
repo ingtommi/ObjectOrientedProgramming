@@ -88,7 +88,7 @@ public class Controller {
 	//@PostMapping(value = "/tweet/stats/geo")
 	
 	@PostMapping(value = "/tweet/stats/hash")
-	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag") String hashtag) {
+	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) {
 		
 		HashStats hs = new HashStats(hashtag,call.getTweets());
 		return new ResponseEntity<>(hs.hashstats(), HttpStatus.OK);
