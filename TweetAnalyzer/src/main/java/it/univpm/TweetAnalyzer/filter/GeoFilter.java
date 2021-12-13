@@ -28,7 +28,6 @@ public class GeoFilter {
 
 		for(int i=0; i<tweets.size(); i++) {
 			JSONObject tweet = null;
-			JSONObject user = null;
 			if(tweets.get(i).getLocation() != null) {
 				if(tweets.get(i).getLocation().toLowerCase().contains(location.toLowerCase())) {
 					tweet = new JSONObject();
@@ -44,11 +43,14 @@ public class GeoFilter {
 			}
 			else if(tweets.get(i).getLocation() == null && users.get(i).getLocation() != null) {
 				if(users.get(i).getLocation().toLowerCase().contains(location.toLowerCase())) {
-					user = new JSONObject();
-					user.put("location",users.get(i).getLocation());
+					tweet = new JSONObject();
+					tweet.put("created_at",tweets.get(i).getDatatime());
+					tweet.put("id",tweets.get(i).getId());
+					tweet.put("location",users.get(i).getLocation());
+					tweet.put("hashtags",tweets.get(i).getHashtags());
 				}
-				if (user!= null) {
-					list.add(user);
+				if (tweet!= null) {
+					list.add(tweet);
 				}
 				loc.put("tweets written in " + location, list);
 			}
