@@ -1,8 +1,11 @@
 package it.univpm.TweetAnalyzer.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
 import it.univpm.TweetAnalyzer.service.GetData;
+import it.univpm.TweetAnalyzer.service.GetFile;
 import it.univpm.TweetAnalyzer.stats.DailyStats;
 import it.univpm.TweetAnalyzer.stats.GeoStats;
 import it.univpm.TweetAnalyzer.stats.HashStats;
@@ -91,7 +95,8 @@ public class Controller {
 	}
 	
 	@PostMapping(value = "/tweet/stats/geo")
-	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) {
+	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) 
+			throws FileNotFoundException, IOException, ParseException {
 		
 		GetFile gf = new GetFile();
 		GeoStats gs = new GeoStats(loc,call.getTweets(),call.getUsers(),gf.getFile());

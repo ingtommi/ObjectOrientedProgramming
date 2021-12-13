@@ -1,6 +1,5 @@
 package it.univpm.TweetAnalyzer.service;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,21 +19,20 @@ public class GetFile {
 
 	//TODO:aggiungere eccezioni;
 
-	public ArrayList<Location> getFile() {
+	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		Object object = parser.parse(new FileReader("listaComuni.json"));
-		JSONObject jsonObject = (JSONObject) object;
-		JSONArray JSONcityList =  (JSONArray)jsonObject.get("Location");
-		if (JSONcityList != null) { 
-			for (int i=0;i<(JSONcityList).size();i++){ 
-				JSONObject obj = (JSONObject) JSONcityList.get(i);
-				String city = (String) obj.get("City");
-				String province = (String) obj.get("Province");
-				String region = (String) obj.get("Region");
+		JSONObject jsonObj = (JSONObject) object;
+		JSONArray list =  (JSONArray) jsonObj.get("Location");
+		if (list != null) { 
+			for (int i=0; i<(list).size(); i++){ 
+				JSONObject loc = (JSONObject) list.get(i);
+				String city = (String) loc.get("City");
+				String province = (String) loc.get("Province");
+				String region = (String) loc.get("Region");
 				cityList.add(new Location(city,province,region));
 			} 
 		} 
 		return cityList;
 	}		
-
 }
