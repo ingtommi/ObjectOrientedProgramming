@@ -58,5 +58,4 @@ public class GeoFilter {
 		}
 		return loc;
 	}
-
 }

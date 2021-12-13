@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.TweetAnalyzer.filter.DailyFilter;
+import it.univpm.TweetAnalyzer.filter.GeoFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
 import it.univpm.TweetAnalyzer.service.GetData;
 import it.univpm.TweetAnalyzer.service.GetFile;
@@ -76,7 +77,8 @@ public class Controller {
 	@PostMapping(value = "/tweet/filter/geo")
 	public ResponseEntity<Object> geofilter(@RequestParam(name = "location", required = false) String loc) {
 		
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		GeoFilter gf = new GeoFilter(loc,call.getTweets(),call.getUsers());
+		return new ResponseEntity<>(gf.geofilter(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/tweet/stats/day")

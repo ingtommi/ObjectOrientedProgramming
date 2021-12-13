@@ -13,6 +13,6 @@ public class IsEmptyException extends Exception {
 
 	//ritorna messaggio di errore
 	public ResponseEntity<Object> getErr() {
-		return new ResponseEntity<>("ERROR: no hashtag found!", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>("ERROR: no tweets found!", HttpStatus.BAD_REQUEST);
 	}
 }

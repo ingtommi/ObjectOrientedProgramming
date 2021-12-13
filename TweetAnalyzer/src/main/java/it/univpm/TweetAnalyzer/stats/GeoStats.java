@@ -60,28 +60,34 @@ public class GeoStats {
 		int no = 0;
 		int ita = 0;
 		for(int i=0; i<tweets.size(); i++) {
+			boolean find = false;
 			if(tweets.get(i).getLocation() == null && users.get(i).getLocation() == null) {
 				no++;
 			}
 			else if(tweets.get(i).getLocation() != null) {
-				for(int k=0; k<cities.size(); k++) {
-					if(tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity()) || 
-							tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion())) {
-						//evita di incrementare più volte
-						if(ita<1) {
-							ita++;
+				while(!find) {
+					for(int k=0; k<cities.size(); k++) {
+						if(tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
+								tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
+							find = true;
 						}
 					}
 				}
+				if(find) {
+					ita++;
+				}
 			}
 			else if(tweets.get(i).getLocation() == null && users.get(i).getLocation() != null) {
-				for(int k=0; k<cities.size(); k++) {
-					if(users.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity()) || 
-							users.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion())) {
-						if(ita<1) {
-							ita++;
+				while(!find) {
+					for(int k=0; k<cities.size(); k++) {
+						if(users.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
+								users.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
+							find = true;
 						}
 					}
+				}
+				if(find) {
+					ita++;
 				}
 			}
 		}

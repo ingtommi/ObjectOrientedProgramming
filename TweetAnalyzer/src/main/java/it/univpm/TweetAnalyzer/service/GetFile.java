@@ -15,9 +15,7 @@ public class GetFile {
 
 	ArrayList<Location> cityList = new ArrayList<Location>();
 
-	public GetFile(){}
-
-	//TODO:aggiungere eccezioni;
+	public GetFile() {}
 
 	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();

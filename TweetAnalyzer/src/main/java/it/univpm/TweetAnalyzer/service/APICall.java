@@ -90,7 +90,7 @@ public class APICall {
 			e.printStackTrace();
 		}
 
-		//TODO: lanciare eccezione se status/hashtags = []
+		//TODO: lanciare eccezione se status = []
 		JSONArray statuses = (JSONArray) obj.get("statuses");
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
