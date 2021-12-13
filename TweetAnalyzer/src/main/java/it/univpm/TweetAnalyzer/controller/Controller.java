@@ -75,7 +75,7 @@ public class Controller {
 	}
 	
 	@PostMapping(value = "/tweet/filter/geo")
-	public ResponseEntity<Object> geofilter(@RequestParam(name = "location", required = false) String loc) {
+	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) {
 		
 		GeoFilter gf = new GeoFilter(loc,call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(gf.geofilter(), HttpStatus.OK);

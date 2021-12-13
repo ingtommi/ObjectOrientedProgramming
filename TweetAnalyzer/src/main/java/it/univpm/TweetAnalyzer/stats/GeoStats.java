@@ -65,12 +65,10 @@ public class GeoStats {
 				no++;
 			}
 			else if(tweets.get(i).getLocation() != null) {
-				while(!find) {
-					for(int k=0; k<cities.size(); k++) {
-						if(tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
-								tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
-							find = true;
-						}
+				for(int k=0; k<cities.size() && !find; k++) {
+					if(tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
+							tweets.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
+						find = true;
 					}
 				}
 				if(find) {
@@ -78,12 +76,10 @@ public class GeoStats {
 				}
 			}
 			else if(tweets.get(i).getLocation() == null && users.get(i).getLocation() != null) {
-				while(!find) {
-					for(int k=0; k<cities.size(); k++) {
-						if(users.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
-								users.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
-							find = true;
-						}
+				for(int k=0; k<cities.size() && !find; k++) {
+					if(users.get(i).getLocation().toLowerCase().contains(cities.get(k).getCity().toLowerCase()) || 
+							users.get(i).getLocation().toLowerCase().contains(cities.get(k).getRegion().toLowerCase())) {
+						find = true;
 					}
 				}
 				if(find) {
@@ -91,12 +87,15 @@ public class GeoStats {
 				}
 			}
 		}
+		int rest = tweets.size()-ita-no;
 		HashMap<String, Float> gen = new HashMap<String, Float>();
 		gen.put("Total tweets downloaded", (float) tweets.size());
-		gen.put("Tweets with no geo info", (float) no);
 		gen.put("Tweets written in Italy", (float) ita);
-		gen.put("Percentage of tweets with no geo info", 100*(float) no/tweets.size());
+		gen.put("Tweets with unprocessable location", (float) rest);
+		gen.put("Tweets with null location", (float) no);
 		gen.put("Percentage of tweets written in Italy", 100*(float) ita/tweets.size());
+		gen.put("Percentage of tweets with unprocessable location", 100*(float) rest/tweets.size());
+		gen.put("Percentage of tweets with no location", 100*(float) no/tweets.size());
 
 		return gen;
 	}
