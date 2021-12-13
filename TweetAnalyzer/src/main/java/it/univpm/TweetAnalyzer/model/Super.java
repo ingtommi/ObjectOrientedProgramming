@@ -2,13 +2,13 @@ package it.univpm.TweetAnalyzer.model;
 
 import java.time.LocalDate;
 
-public class Model {
+public class Super {
 	
 	private LocalDate date;
 	private long id;
 	private String location;
 	
-	public Model(LocalDate date, long id, String location) {
+	public Super(LocalDate date, long id, String location) {
 		this.date = date;
 		this.id = id;
 		this.location = location;

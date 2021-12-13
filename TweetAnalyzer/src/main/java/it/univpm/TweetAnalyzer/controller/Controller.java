@@ -15,6 +15,7 @@ import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.service.APICall;
 import it.univpm.TweetAnalyzer.service.GetData;
 import it.univpm.TweetAnalyzer.stats.DailyStats;
+import it.univpm.TweetAnalyzer.stats.GeoStats;
 import it.univpm.TweetAnalyzer.stats.HashStats;
 
 @RestController
@@ -68,7 +69,11 @@ public class Controller {
 		return new ResponseEntity<>(df.dayfilter(), HttpStatus.OK);
 	}
 	
-	//@PostMapping(value = "/tweet/filter/geo")
+	@PostMapping(value = "/tweet/filter/geo")
+	public ResponseEntity<Object> geofilter(@RequestParam(name = "location", required = false) String loc) {
+		
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
 	
 	@PostMapping(value = "/tweet/stats/day")
 	public ResponseEntity<Object> daystats(
@@ -85,7 +90,13 @@ public class Controller {
 		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
 	}
 	
-	//@PostMapping(value = "/tweet/stats/geo")
+	@PostMapping(value = "/tweet/stats/geo")
+	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) {
+		
+		GetFile gf = new GetFile();
+		GeoStats gs = new GeoStats(loc,call.getTweets(),call.getUsers(),gf.getFile());
+		return new ResponseEntity<>(gs.geostats(), HttpStatus.OK);
+	}
 	
 	@PostMapping(value = "/tweet/stats/hash")
 	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) {

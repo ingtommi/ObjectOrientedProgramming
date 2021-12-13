@@ -2,7 +2,7 @@ package it.univpm.TweetAnalyzer.model;
 
 import java.time.LocalDate;
 
-public class User extends Model{
+public class User extends Super{
 
 	private String name;
 
