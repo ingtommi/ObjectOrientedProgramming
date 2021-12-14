@@ -36,7 +36,7 @@ public class APICall implements APICallService {
 
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, Config conf) throws MissingParameterException, MissingCallException {
 		if(ht1==null) {
-			throw new MissingParameterException("ERROR: Missing parameters!");
+			throw new MissingParameterException("ERROR: missing parameters!");
 		}
 		if(conf==null) {
 			throw new MissingCallException("ERROR: first contact http://localhost:8080/config");
@@ -79,7 +79,8 @@ public class APICall implements APICallService {
 				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
 			}
 		}
-		else { throw new WrongMethodException("ERROR: wrong method!");
+		else { 
+			throw new WrongMethodException("ERROR: wrong method!");
 		} 
 		return api;
 	}
@@ -109,7 +110,7 @@ public class APICall implements APICallService {
 
 		JSONArray statuses = (JSONArray) obj.get("statuses");
 		if(statuses.isEmpty()) {
-			throw new IsEmptyException("ERROR: No tweets found!");
+			throw new IsEmptyException("ERROR: no tweets found!");
 		}
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
