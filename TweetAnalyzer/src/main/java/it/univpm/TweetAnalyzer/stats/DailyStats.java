@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import it.univpm.TweetAnalyzer.model.Tweet;
 
-public class DailyStats {
+public class DailyStats implements Stats {
 	
 	private LocalDate date;
 	private ArrayList<Tweet> tweets;
@@ -19,7 +19,8 @@ public class DailyStats {
 		this.tweets = tweets;
 	}
 
-	public HashMap<String,Float> daystats() {
+	@Override
+	public HashMap<String,Float> stats() {
 		for(Tweet tweet : tweets) {
 			if(tweet.getDatatime().compareTo(date)==0) {
 				day1++;
@@ -36,7 +37,7 @@ public class DailyStats {
 		out.put("Tweets written on " + date, (float) day1);
 		out.put("Tweets written on " + date.minusDays(1), (float) day2);
 		out.put("Tweets written on " + date.minusDays(2), (float) day3);
-		out.put("Percentage", 100*(float) (day1+day2+day3)/tweets.size());
+		out.put("Percentage", 100* (float) (day1+day2+day3)/tweets.size());
 		return out;		
 	}
 }

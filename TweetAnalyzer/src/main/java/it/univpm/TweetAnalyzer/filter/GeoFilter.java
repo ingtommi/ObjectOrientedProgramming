@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import it.univpm.TweetAnalyzer.model.*;
 
 
-public class GeoFilter {
+public class GeoFilter implements Filter {
 
 	private String location;
 	private ArrayList<Tweet> tweets;
@@ -20,8 +20,9 @@ public class GeoFilter {
 		this.users = users;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
-	public JSONObject geofilter() {
+	public JSONObject filter() {
 
 		JSONObject loc = new JSONObject();
 		JSONArray list = new JSONArray();

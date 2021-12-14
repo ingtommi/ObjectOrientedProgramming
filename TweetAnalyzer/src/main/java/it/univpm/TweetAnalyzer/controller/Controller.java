@@ -85,14 +85,14 @@ public class Controller {
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
 		DailyFilter df = new DailyFilter(date,call.getTweets());
-		return new ResponseEntity<>(df.dayfilter(), HttpStatus.OK);
+		return new ResponseEntity<>(df.filter(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/filter/geo")
 	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) {
 		
 		GeoFilter gf = new GeoFilter(loc,call.getTweets(),call.getUsers());
-		return new ResponseEntity<>(gf.geofilter(), HttpStatus.OK);
+		return new ResponseEntity<>(gf.filter(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/stats/day")
@@ -107,7 +107,7 @@ public class Controller {
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
 		DailyStats ds = new DailyStats(date,call.getTweets());
-		return new ResponseEntity<>(ds.daystats(), HttpStatus.OK);
+		return new ResponseEntity<>(ds.stats(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/stats/geo")
@@ -116,13 +116,13 @@ public class Controller {
 		
 		GetFile gf = new GetFile();
 		GeoStats gs = new GeoStats(loc,call.getTweets(),call.getUsers(),gf.getFile());
-		return new ResponseEntity<>(gs.geostats(), HttpStatus.OK);
+		return new ResponseEntity<>(gs.stats(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/tweet/stats/hash")
 	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) {
 		
 		HashStats hs = new HashStats(hashtag,call.getTweets());
-		return new ResponseEntity<>(hs.hashstats(), HttpStatus.OK);
+		return new ResponseEntity<>(hs.stats(), HttpStatus.OK);
 	}		
 }
