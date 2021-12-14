@@ -71,7 +71,7 @@ public class Controller {
 		
 		if(call==null) {
 			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
-			}
+		}
 		GetData data = new GetData(call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
 	}
