@@ -42,7 +42,7 @@ Permette di visualizzare i tweet salvati precedentemente
 
 Permette di visualizzare i tweet scritti in un determinato giorno 
 
-DEFAULT: giorno corrente
+**DEFAULT: giorno corrente**
 
 > **GET** /tweet/filter/geo
 
