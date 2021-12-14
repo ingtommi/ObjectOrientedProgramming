@@ -11,28 +11,20 @@
 
 # Rotte applicazione
 
-> **POST** /config
-
-Permette di settare url API e bearer token 
-
-**DEFAULT: proxy univpm e nessun token**
-
-***NOTA: deve essere lanciato prima di tutto il resto ad esclusione dei metadati***
-
 > **GET** /tweet/metadata
 
 Restituisce metadati
 
 > **GET** /tweet/get/{method}
 
-Permette di scaricare tweet inserendo fino a 3 hashtag scegliendo se devono esserci tutti con **{method} = and**
-oppure soltanto uno con **{method} = or**
+Permette di scaricare tweet inserendo fino a 3 hashtag e scegliendo se devono esserci tutti con **{method} = and**
+oppure soltanto uno con **{method} = or**. 
 
 Inoltre è possibile scegliere la lingua dei tweet e quanti tweet scaricare
 
 **DEFAULT: lingua italiana, 5 tweet restituiti**
 
-***NOTA: deve essere lanciato prima di /data o /stats o /filter***
+***NOTA: deve essere lanciato prima delle rotte visualizzate di seguito***
 
 > **GET** /tweet/data
 
@@ -40,28 +32,28 @@ Permette di visualizzare i tweet salvati precedentemente
 
 > **GET** /tweet/filter/day
 
-Permette di visualizzare i tweet scritti in un determinato giorno 
+Permette di visualizzare i tweet scritti nel giorno passato come parametro
 
 **DEFAULT: giorno corrente**
 
 > **GET** /tweet/filter/geo
 
-Permette di visualizzare i tweet provenienti da una specifica località (se tweet non geolocalizzato si usa posizione utente)
+Permette di visualizzare i tweet provenienti dalla località passata come parametro (se tweet non geolocalizzato si usa posizione utente)
 
 > **GET** /tweet/stats/day
 
-Permette di visualizzare quanti post sono stati scritti nel giorno specifico e nei 2 precedenti
+Permette di avere statistiche sui tweet scritti nel giorno specificato e nei due precedenti
 
 **DEFAULT: giorno corrente**
 
 > **GET** /tweet/stats/geo
 
-Permette di visualizzare quanti post provengono da una specifica località (se tweet non geolocalizzato si usa posizione utente)
+Permette di avere statistiche sui tweet provenienti dalla specifica località (se tweet non geolocalizzato si usa posizione utente)
 
 **DEFAULT: tweet da Italia leggendo da listaComuni.json**
 
 > **GET** /tweet/stats/hash
 
-Permette di visualizzare quanti post contengono lo specifico hashtag
+Permette di avere statistiche sui tweet contenenti l'hashtag passato come parametro
 
 **DEFAULT: massimo, minimo e media degli hashtag per tweet**
