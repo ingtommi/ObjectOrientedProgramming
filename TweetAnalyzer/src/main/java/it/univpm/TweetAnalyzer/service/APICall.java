@@ -21,7 +21,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-public class APICall {
+public class APICall implements APICallService {
 
 	private String apiBase,token;
 	private String api;
@@ -48,12 +48,15 @@ public class APICall {
 		this.token = conf.getToken();
 	}
 	
+	@Override
 	public ArrayList<Tweet> getTweets() { return tweets; }
+	@Override
 	public ArrayList<User> getUsers() { return users; }
 
 	
 	//TODO: eccezione se metodo diverso da AND o OR
 	
+	@Override
 	public String apiBuild() {
 
 		if(met.equals("AND") || met.equals("OR")) {
@@ -74,6 +77,7 @@ public class APICall {
 		return api;
 	}
 
+	@Override
 	public String saveData() {
 
 		String body = "";
@@ -134,6 +138,8 @@ public class APICall {
 	}
 	
 	//trasformo stringa data in formato LocalDate
+	
+	@Override
 	public LocalDate parseData(String created_at) {
 		LocalDate date;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);

@@ -8,9 +8,9 @@ import it.univpm.TweetAnalyzer.model.User;
 
 public interface APICallService {
 	
-	public ArrayList<Tweet> getTweets();
+	public abstract ArrayList<Tweet> getTweets();
 	
-	public ArrayList<User> getUsers();
+	public abstract ArrayList<User> getUsers();
 
 	public abstract String apiBuild();
 	

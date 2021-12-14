@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import it.univpm.TweetAnalyzer.model.Tweet;
 import it.univpm.TweetAnalyzer.model.User;
 
-public class GetData {
+public class GetData implements GetDataService{
 	
 	private ArrayList<Tweet> tweets;
 	private ArrayList<User> users;
@@ -20,6 +20,7 @@ public class GetData {
 		this.users = users;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public JSONObject seeMeta() {
 		
@@ -47,6 +48,7 @@ public class GetData {
 		return meta;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public JSONObject seeData() {
 		
