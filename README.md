@@ -23,7 +23,8 @@ Restituisce metadati
 
 > **GET** /tweet/get/{method}
 
-Permette di scaricare tweet inserendo fino a 3 hashtag scegliendo se devono esserci tutti con **{method} = and** o soltanto uno con **{method} = or**
+Permette di scaricare tweet inserendo fino a 3 hashtag scegliendo se devono esserci tutti con **{method} = and**
+o soltanto uno con **{method} = or**
 
 Inoltre è possibile scegliere la lingua dei tweet e quanti tweet scaricarne (DEFAULT: italiana, 5)
 
