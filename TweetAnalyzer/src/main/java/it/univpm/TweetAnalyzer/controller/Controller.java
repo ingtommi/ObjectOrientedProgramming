@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.univpm.TweetAnalyzer.exception.*;
 import it.univpm.TweetAnalyzer.filter.DailyFilter;
 import it.univpm.TweetAnalyzer.filter.GeoFilter;
 import it.univpm.TweetAnalyzer.model.Config;
@@ -41,7 +42,6 @@ public class Controller {
 		return new ResponseEntity<>(conf.getMex(), HttpStatus.ACCEPTED);
 	}
 	
-	//TODO: eccezione quando manca hashtag1
 	//TODO: eccezione se non ci si è autenticati (POST /config)
 	
 	@GetMapping(value = "/tweet/get/{method}") //method = and/or
@@ -51,7 +51,7 @@ public class Controller {
 			@RequestParam(name = "hashtag2", required = false) String ht2,
 			@RequestParam(name = "hashtag3", required = false) String ht3,
 			@RequestParam(name = "count", defaultValue = "5") int count, 
-			@RequestParam(name = "lang", defaultValue = "it") String lang) {
+			@RequestParam(name = "lang", defaultValue = "it") String lang) throws WrongMethodException, IsEmptyException, MissingParameterException, MissingCallException {
 		
 		call = new APICall(ht1,ht2,ht3,met,lang,count,conf);
 		return new ResponseEntity<>(call.saveData(), HttpStatus.OK);
@@ -67,8 +67,11 @@ public class Controller {
 	//TODO: eccezione se non sono stati salvati i dati (GET /tweet/get/{method})
 	
 	@GetMapping(value = "/tweet/data")
-	public ResponseEntity<Object> seeData() {
+	public ResponseEntity<Object> seeData() throws MissingCallException {
 		
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+			}
 		GetData data = new GetData(call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
 	}

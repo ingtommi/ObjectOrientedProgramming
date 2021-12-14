@@ -1,7 +1,5 @@
 package it.univpm.TweetAnalyzer.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 public class IsEmptyException extends Exception {
 
@@ -11,8 +9,7 @@ public class IsEmptyException extends Exception {
 		super();
 	}
 
-	//ritorna messaggio di errore
-	public ResponseEntity<Object> getErr() {
-		return new ResponseEntity<>("ERROR: no tweets found!", HttpStatus.BAD_REQUEST);
+	public IsEmptyException(String message) {
+		super(message);
 	}
 }

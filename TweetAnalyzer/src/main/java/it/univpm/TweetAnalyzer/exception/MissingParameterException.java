@@ -1,7 +1,5 @@
 package it.univpm.TweetAnalyzer.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 public class MissingParameterException extends Exception {
 
@@ -11,8 +9,7 @@ public class MissingParameterException extends Exception {
 		super();
 	}
 
-	//ritorna messaggio di errore
-	public ResponseEntity<Object> getErr() {
-		return new ResponseEntity<>("ERROR: missing parameters!", HttpStatus.BAD_REQUEST);
+	public MissingParameterException(String message) {
+		super(message);
 	}
 }

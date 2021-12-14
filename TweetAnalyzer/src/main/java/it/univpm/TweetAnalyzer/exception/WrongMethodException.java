@@ -1,7 +1,5 @@
 package it.univpm.TweetAnalyzer.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 public class WrongMethodException extends Exception {
 
@@ -11,8 +9,7 @@ public class WrongMethodException extends Exception {
 		super();
 	}
 
-	//ritorna messaggio di errore
-	public ResponseEntity<Object> getErr() {
-		return new ResponseEntity<>("ERROR: wrong method!", HttpStatus.BAD_REQUEST);
+	public WrongMethodException(String message) {
+		super(message);
 	}
 }

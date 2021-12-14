@@ -1,6 +1,7 @@
 package it.univpm.TweetAnalyzer.service;
 
 import it.univpm.TweetAnalyzer.model.User;
+import it.univpm.TweetAnalyzer.exception.*;
 import it.univpm.TweetAnalyzer.model.Config;
 import it.univpm.TweetAnalyzer.model.Tweet;
 
@@ -33,7 +34,13 @@ public class APICall implements APICallService {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 
-	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, Config conf) {
+	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, Config conf) throws MissingParameterException, MissingCallException {
+		if(ht1==null) {
+			throw new MissingParameterException("ERROR: Missing parameters!");
+		}
+		if(conf==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/config");
+		}
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {
 			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
@@ -54,12 +61,10 @@ public class APICall implements APICallService {
 	public ArrayList<User> getUsers() { return users; }
 
 	
-	//TODO: eccezione se metodo diverso da AND o OR
-	
 	@Override
-	public String apiBuild() {
+	public String apiBuild() throws WrongMethodException {
 
-		if(met.equals("AND") || met.equals("OR")) {
+		if (met.equals("AND") || met.equals("OR")) {
 			if(ht2==null && ht3==null) {
 				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
 			}
@@ -74,11 +79,13 @@ public class APICall implements APICallService {
 				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
 			}
 		}
+		else { throw new WrongMethodException("ERROR: wrong method!");
+		} 
 		return api;
 	}
 
 	@Override
-	public String saveData() {
+	public String saveData() throws WrongMethodException, IsEmptyException {
 
 		String body = "";
 		String line = "";
@@ -100,8 +107,10 @@ public class APICall implements APICallService {
 			e.printStackTrace();
 		}
 
-		//TODO: lanciare eccezione se status = []
 		JSONArray statuses = (JSONArray) obj.get("statuses");
+		if(statuses.isEmpty()) {
+			throw new IsEmptyException("ERROR: No tweets found!");
+		}
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
 			//TWEET INFO
