@@ -26,6 +26,8 @@ Restituisce metadati
 Permette di scaricare tweet inserendo fino a 3 hashtag scegliendo se devono esserci tutti con **{method} = and**
 oppure soltanto uno con **{method} = or**
 
+**NOTA: deve essere lanciato prima di /data o /stats o /filter**
+
 Inoltre è possibile scegliere la lingua dei tweet e quanti tweet scaricarne (DEFAULT: italiana, 5)
 
 > **GET** /tweet/data
