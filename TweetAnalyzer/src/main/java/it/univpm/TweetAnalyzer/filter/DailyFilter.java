@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 import it.univpm.TweetAnalyzer.model.Tweet;
 
-public class DailyFilter {
+public class DailyFilter implements Filter {
 	
 	private LocalDate date;
 	private ArrayList<Tweet> tweets;
@@ -18,8 +18,9 @@ public class DailyFilter {
 		this.tweets = tweets;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
-	public JSONObject dayfilter() {
+	public JSONObject filter() {
 		
 		JSONObject data = new JSONObject();
 		JSONArray list = new JSONArray();

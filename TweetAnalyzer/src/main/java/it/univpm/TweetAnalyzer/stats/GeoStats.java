@@ -6,7 +6,7 @@ import java.util.HashMap;
 import it.univpm.TweetAnalyzer.model.*;
 
 
-public class GeoStats {
+public class GeoStats implements Stats {
  
 	private String location;
 	private ArrayList<Tweet> tweets;
@@ -20,7 +20,8 @@ public class GeoStats {
 		this.cities = cities;
 	}
 	
-	public HashMap<String, Float> geostats() {
+	@Override
+	public HashMap<String, Float> stats() {
 		
 		HashMap<String, Float> out = new HashMap<String, Float>();
 		if(location == null) {
@@ -93,9 +94,9 @@ public class GeoStats {
 		gen.put("Tweets written in Italy", (float) ita);
 		gen.put("Tweets with unprocessable location", (float) rest);
 		gen.put("Tweets with null location", (float) no);
-		gen.put("Percentage of tweets written in Italy", 100*(float) ita/tweets.size());
+		gen.put("Percentage of tweets written in Italy", 100* (float) ita/tweets.size());
 		gen.put("Percentage of tweets with unprocessable location", 100*(float) rest/tweets.size());
-		gen.put("Percentage of tweets with no location", 100*(float) no/tweets.size());
+		gen.put("Percentage of tweets with no location", 100* (float) no/tweets.size());
 
 		return gen;
 	}

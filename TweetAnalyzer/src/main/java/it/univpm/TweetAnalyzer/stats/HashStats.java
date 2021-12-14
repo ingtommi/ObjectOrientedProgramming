@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import it.univpm.TweetAnalyzer.model.Tweet;
 
-public class HashStats {
+public class HashStats implements Stats{
 
 	String hashtag;
 	private ArrayList<Tweet> tweets;
@@ -16,7 +16,8 @@ public class HashStats {
 		this.tweets = tweets;
 	}
 
-	public HashMap<String, Float> hashstats() {
+	@Override
+	public HashMap<String, Float> stats() {
 		
 		HashMap<String, Float> out = new HashMap<String, Float>();
 		if(hashtag == null) {
@@ -40,7 +41,7 @@ public class HashStats {
 		HashMap<String, Float> spe = new HashMap<String, Float>();
 		spe.put("Total tweets downloaded", (float) tweets.size());
 		spe.put("Tweets containing #" + hashtag, (float) tot);
-		spe.put("Percentage", 100*(float) tot/tweets.size());
+		spe.put("Percentage", 100* (float) tot/tweets.size());
 
 		return spe;
 	}

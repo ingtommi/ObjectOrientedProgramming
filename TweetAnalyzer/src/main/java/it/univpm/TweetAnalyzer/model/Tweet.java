@@ -3,7 +3,7 @@ package it.univpm.TweetAnalyzer.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Tweet extends Super {
+public class Tweet extends Model {
 
 	private ArrayList<String> hashtags;
 	
