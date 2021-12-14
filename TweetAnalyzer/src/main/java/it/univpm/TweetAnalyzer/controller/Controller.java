@@ -48,11 +48,8 @@ public class Controller {
 			@RequestParam(name = "hashtag2", required = false) String ht2,
 			@RequestParam(name = "hashtag3", required = false) String ht3,
 			@RequestParam(name = "count", defaultValue = "5") int count, 
-			@RequestParam(name = "lang", defaultValue = "it") String lang) throws WrongMethodException, IsEmptyException, MissingParameterException, MissingCallException {
+			@RequestParam(name = "lang", defaultValue = "it") String lang) throws WrongMethodException, IsEmptyException, MissingCallException {
 
-		if(ht1==null) {
-			throw new MissingParameterException("ERROR: missing parameters!");
-		}
 		if(conf==null) {
 			throw new MissingCallException("ERROR: first contact http://localhost:8080/config");
 		}
