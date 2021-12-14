@@ -35,10 +35,9 @@ public class Controller {
 
 	@PostMapping(value = "/config")
 	public ResponseEntity<Object> config(
-			@RequestParam(name = "url", defaultValue = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?") String url,
-			@RequestParam(name = "bearer", required = false) String key) {
+			@RequestParam(name = "url", defaultValue = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?") String url) {
 
-		conf = new Config(url,key);
+		conf = new Config(url);
 		return new ResponseEntity<>(conf.getMex(), HttpStatus.ACCEPTED);
 	}
 
@@ -51,7 +50,13 @@ public class Controller {
 			@RequestParam(name = "count", defaultValue = "5") int count, 
 			@RequestParam(name = "lang", defaultValue = "it") String lang) throws WrongMethodException, IsEmptyException, MissingParameterException, MissingCallException {
 
-		call = new APICall(ht1,ht2,ht3,met,lang,count,conf);
+		if(ht1==null) {
+			throw new MissingParameterException("ERROR: missing parameters!");
+		}
+		if(conf==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/config");
+		}
+		call = new APICall(ht1,ht2,ht3,met,lang,count,conf.getUrl());
 		return new ResponseEntity<>(call.saveData(), HttpStatus.OK);
 	}
 
@@ -76,20 +81,26 @@ public class Controller {
 	public ResponseEntity<Object> dayfilter(
 			@RequestParam(name = "day", required = false) Integer day, //utilizzo Integer perchè posso controllare se null
 			@RequestParam(name = "month", required = false) Integer month,
-			@RequestParam(name = "year", required = false) Integer year) {
+			@RequestParam(name = "year", required = false) Integer year) throws MissingCallException {
 
 		LocalDate date;
 		if(day == null || month == null || year == null) {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+		}
 		DailyFilter df = new DailyFilter(date,call.getTweets());
 		return new ResponseEntity<>(df.filter(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/tweet/filter/geo")
-	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) {
+	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) throws MissingCallException {
 
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+		}
 		GeoFilter gf = new GeoFilter(loc,call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(gf.filter(), HttpStatus.OK);
 	}
@@ -98,29 +109,38 @@ public class Controller {
 	public ResponseEntity<Object> daystats(
 			@RequestParam(name = "day", required = false) Integer day,
 			@RequestParam(name = "month", required = false) Integer month,
-			@RequestParam(name = "year", required = false) Integer year) {
+			@RequestParam(name = "year", required = false) Integer year) throws MissingCallException {
 
 		LocalDate date;
 		if(day == null || month == null || year == null) {
 			date = LocalDate.now();
 		}
 		else date = LocalDate.of(year,Month.of(month),day);
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+		}
 		DailyStats ds = new DailyStats(date,call.getTweets());
 		return new ResponseEntity<>(ds.stats(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/tweet/stats/geo")
 	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) 
-			throws FileNotFoundException, IOException, ParseException {
+			throws FileNotFoundException, IOException, ParseException, MissingCallException {
 
 		GetFile gf = new GetFile();
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+		}
 		GeoStats gs = new GeoStats(loc,call.getTweets(),call.getUsers(),gf.getFile());
 		return new ResponseEntity<>(gs.stats(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/tweet/stats/hash")
-	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) {
+	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) throws MissingCallException {
 
+		if(call==null) {
+			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
+		}
 		HashStats hs = new HashStats(hashtag,call.getTweets());
 		return new ResponseEntity<>(hs.stats(), HttpStatus.OK);
 	}		

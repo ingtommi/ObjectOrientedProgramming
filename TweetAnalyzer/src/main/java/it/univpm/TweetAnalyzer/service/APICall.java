@@ -2,7 +2,6 @@ package it.univpm.TweetAnalyzer.service;
 
 import it.univpm.TweetAnalyzer.model.User;
 import it.univpm.TweetAnalyzer.exception.*;
-import it.univpm.TweetAnalyzer.model.Config;
 import it.univpm.TweetAnalyzer.model.Tweet;
 
 import java.io.BufferedReader;
@@ -24,7 +23,7 @@ import org.json.simple.parser.ParseException;
 
 public class APICall implements APICallService {
 
-	private String apiBase,token;
+	private String apiBase;
 	private String api;
 	private String ht1,ht2,ht3;
 	private int count;
@@ -34,13 +33,7 @@ public class APICall implements APICallService {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 
-	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, Config conf) throws MissingParameterException, MissingCallException {
-		if(ht1==null) {
-			throw new MissingParameterException("ERROR: missing parameters!");
-		}
-		if(conf==null) {
-			throw new MissingCallException("ERROR: first contact http://localhost:8080/config");
-		}
+	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, String url) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {
 			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
@@ -51,8 +44,7 @@ public class APICall implements APICallService {
 		this.met = met.toUpperCase(); //url richiede AND/OR			
 		this.count = count;
 		this.lang = lang;
-		this.apiBase = conf.getUrl();
-		this.token = conf.getToken();
+		this.apiBase = url;
 	}
 	
 	@Override
@@ -82,6 +74,7 @@ public class APICall implements APICallService {
 		else { 
 			throw new WrongMethodException("ERROR: wrong method!");
 		} 
+		System.out.println(api);
 		return api;
 	}
 
@@ -94,7 +87,6 @@ public class APICall implements APICallService {
 
 		try {
 			HttpURLConnection openConnection = (HttpURLConnection) new URL(this.apiBuild()).openConnection();
-			//openConnection.setRequestProperty("Authorization","Bearer " + token);
 			InputStream in = openConnection.getInputStream();
 			BufferedReader buf = new BufferedReader(new InputStreamReader(in));
 			while ((line = buf.readLine()) != null) {
