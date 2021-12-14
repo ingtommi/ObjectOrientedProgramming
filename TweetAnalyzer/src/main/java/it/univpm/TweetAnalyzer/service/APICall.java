@@ -1,14 +1,15 @@
 package it.univpm.TweetAnalyzer.service;
 
 import it.univpm.TweetAnalyzer.model.User;
+import it.univpm.TweetAnalyzer.model.Config;
 import it.univpm.TweetAnalyzer.model.Tweet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +23,7 @@ import org.json.simple.parser.ParseException;
 
 public class APICall {
 
-	private static final String apiBase = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?";
+	private String apiBase,token;
 	private String api;
 	private String ht1,ht2,ht3;
 	private int count;
@@ -32,7 +33,7 @@ public class APICall {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 
-	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
+	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, Config conf) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {
 			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
@@ -43,11 +44,16 @@ public class APICall {
 		this.met = met.toUpperCase(); //url richiede AND/OR			
 		this.count = count;
 		this.lang = lang;
+		this.apiBase = conf.getUrl();
+		this.token = conf.getToken();
 	}
 	
 	public ArrayList<Tweet> getTweets() { return tweets; }
 	public ArrayList<User> getUsers() { return users; }
 
+	
+	//TODO: eccezione se metodo diverso da AND o OR
+	
 	public String apiBuild() {
 
 		if(met.equals("AND") || met.equals("OR")) {
@@ -65,7 +71,6 @@ public class APICall {
 				api = apiBase + "q=" + ht1 + "%20" + met + "%20" + ht2 + "%20" + met + "%20" + ht3 + "&count=" + count +"&lang=" + lang;
 			}
 		}
-		//TODO: inserire eccezione se metodo diverso da AND o OR
 		return api;
 	}
 
@@ -76,7 +81,8 @@ public class APICall {
 		JSONObject obj = null;
 
 		try {
-			URLConnection openConnection = new URL(this.apiBuild()).openConnection();
+			HttpURLConnection openConnection = (HttpURLConnection) new URL(this.apiBuild()).openConnection();
+			//openConnection.setRequestProperty("Authorization","Bearer " + token);
 			InputStream in = openConnection.getInputStream();
 			BufferedReader buf = new BufferedReader(new InputStreamReader(in));
 			while ((line = buf.readLine()) != null) {

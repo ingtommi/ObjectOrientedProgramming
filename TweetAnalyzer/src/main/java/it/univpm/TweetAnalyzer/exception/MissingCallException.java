@@ -13,6 +13,6 @@ public class MissingCallException extends Exception{
 
 	//ritorna messaggio di errore
 	public ResponseEntity<Object> getErr() {
-		return new ResponseEntity<>("ERROR: first contact http://localhost:8080/tweet/get", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>("ERROR: you may need to authenticate (/config) or save data (/tweets/get)", HttpStatus.BAD_REQUEST);
 	}
 }

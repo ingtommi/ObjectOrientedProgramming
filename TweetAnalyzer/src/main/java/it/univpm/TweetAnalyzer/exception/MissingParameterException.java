@@ -3,11 +3,11 @@ package it.univpm.TweetAnalyzer.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-public class MissingParametersException extends Exception {
+public class MissingParameterException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public MissingParametersException() {
+	public MissingParameterException() {
 		super();
 	}
 
