@@ -48,7 +48,8 @@ Permette di visualizzare quanti post sono stati scritti nel giorno specifico e n
 
 > **GET** /tweet/stats/geo
 
-Permette di visualizzare quanti post provengono da una specifica località (se tweet non geolocalizzato si usa posizione utente)
+Permette di visualizzare quanti post provengono da una specifica località (se tweet non geolocalizzato si usa posizione utente, 
+DEFAULT: statistiche su tweet da Italia leggendo da listaComuni.json)
 
 > **GET** /tweet/stats/hash
 
