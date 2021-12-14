@@ -11,12 +11,13 @@ import org.json.simple.parser.ParseException;
 
 import it.univpm.TweetAnalyzer.model.Location;
 
-public class GetFile {
+public class GetFile implements GetFileService {
 
 	ArrayList<Location> cityList = new ArrayList<Location>();
 
 	public GetFile() {}
 
+	@Override
 	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		Object object = parser.parse(new FileReader("listaComuni.json"));
