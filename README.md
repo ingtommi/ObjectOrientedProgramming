@@ -13,7 +13,9 @@
 
 > **POST** /config
 
-Permette di settare url API e Bearer token (DEFAULT: proxy univpm e nessun token)
+Permette di settare url API e bearer token 
+
+**DEFAULT: proxy univpm e nessun token**
 
 ***NOTA: deve essere lanciato prima di tutto il resto ad esclusione dei metadati***
 
