@@ -9,6 +9,14 @@
   
 </div>
 
+# Avvertenze
+
+***Il progetto ha soltanto scopi didattici!*** 
+
+Viene infatti utilizzata un API proxy fornita dal professore che permette di evitare lunghi tempi di verifica account da parte di Twitter e questo rende **impossibile utilizzare l'applicazione con chiavi proprie**.
+
+Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritti durante gli *ultimi 7 giorni*. Per ulteriori informazioni visitare questo [sito](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) e consultare i piani disponibili.
+
 # Contenuti
 
 * [Introduzione](#intro)
@@ -245,3 +253,5 @@ Progetto realizzato da
 * **[Marco Ciampichetti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
 
 Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate. Tutte le specifiche richieste sono state rispettate e sono stati introdotti anche dei **plus** come ad esempio l'*associazione tra il luogo del tweet e i comuni italiani* leggendo da [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/listaComuni.json) o la *statistica per hashtag*.
+
+*Ringraziamo il professor [Emanuele Frontoni](https://www.linkedin.com/in/emanuelefrontoni/) e il suo staff per la disponibilità e i consigli.*
