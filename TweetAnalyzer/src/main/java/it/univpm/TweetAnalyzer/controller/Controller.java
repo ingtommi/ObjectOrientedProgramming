@@ -23,11 +23,30 @@ import it.univpm.TweetAnalyzer.stats.DailyStats;
 import it.univpm.TweetAnalyzer.stats.GeoStats;
 import it.univpm.TweetAnalyzer.stats.HashStats;
 
+/**
+ * Questa classe gestisce tutte le varie rotte disponibili
+ * @author Marco Ciampichetti
+ * @author Tommaso Fava
+ */
+
 @RestController
 public class Controller {
 
 	APICall call;
 
+	/**
+	 * Rotta di tipo GET che consente di fare la ricerca e salvare i dati e restituisce un messaggio di avvenuto salvataggio
+	 * @param met: metodo di tipo AND o OR utilizzati per effettuare la ricerca
+	 * @param ht1: primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
+	 * @param ht2: secondo hashtag, non obbligatorio
+	 * @param ht3: terzo hashtag, non obbligatorio
+	 * @param count: numero di risultati che si vuole visualizzare 
+	 * @param lang: linguaggio della ricerca
+	 * @return stringa che conferma il salvataggio del tweet
+	 * @throws WrongMethodException se i metodi inseriti sono diversi da AND o OR
+	 * @throws IsEmptyException se nessun tweet contiene l hashtag selezionato
+	 * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+	 */
 	@GetMapping(value = "/tweet/get/{method}") //method = and/or
 	public ResponseEntity<Object> getData(
 			@PathVariable(name = "method") String met,
@@ -41,6 +60,10 @@ public class Controller {
 		return new ResponseEntity<>(call.saveData(), HttpStatus.OK);
 	}
 
+	/**
+	 * Rotta di tipo GET che mostra i metadati
+	 * @return un JSONObject contenente le informazioni relative ai tipi di dato visualizzabili
+	 */
 	@GetMapping(value = "/tweet/metadata")
 	public ResponseEntity<Object> seeMeta() {
 
@@ -48,6 +71,11 @@ public class Controller {
 		return new ResponseEntity<>(meta.seeMeta(), HttpStatus.OK);
 	}
 
+	/**
+	 * Rotta di tipo GET che mostra i dati
+	 * @return restituisce un JSONObject contenente i dati relativi ai tweet precedentemente salvati
+	 * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+	 */
 	@GetMapping(value = "/tweet/data")
 	public ResponseEntity<Object> seeData() throws MissingCallException {
 
@@ -58,6 +86,14 @@ public class Controller {
 		return new ResponseEntity<>(data.seeData(), HttpStatus.OK);
 	}
 
+	/**
+	 * Rotta di tipo GET che mostra il filtraggio per giorno
+	 * @param day: giorno selezionato per filtraggio
+	 * @param month: mese selezionato per filtraggio
+	 * @param year: anno selezionato per filtraggio
+	 * @return un JSONObject contenente i tweet postati nel giorno inserito
+	 * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+	 */
 	@GetMapping(value = "/tweet/filter/day")
 	public ResponseEntity<Object> dayfilter(
 			@RequestParam(name = "day", required = false) Integer day, //utilizzo Integer perchè posso controllare se null
@@ -76,6 +112,12 @@ public class Controller {
 		return new ResponseEntity<>(df.filter(), HttpStatus.OK);
 	}
 
+	/**
+	 * Rotta di tipo GET che mostra il filtraggio per luogo
+	 * @param loc: luogo sul quale si vuole effettuare il filtraggio
+	 * @return un JSONObject contenente i tweet postati dal luogo inserito
+	 * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+	 */
 	@GetMapping(value = "/tweet/filter/geo")
 	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) throws MissingCallException {
 
@@ -85,8 +127,16 @@ public class Controller {
 		GeoFilter gf = new GeoFilter(loc,call.getTweets(),call.getUsers());
 		return new ResponseEntity<>(gf.filter(), HttpStatus.OK);
 	}
-
-	@GetMapping(value = "/tweet/stats/day")
+	
+	/**
+	 * Rotta di tipo GET che mostra le statistiche per il giorno selezionato e i due precedenti
+	 * @param day: giorno selezionato per effettuare la statistica
+	 * @param month: mese selezionato per effettuare la statistica
+	 * @param year: anno selezionato per effettuare la statistica
+	 * @return una HashMap con il numero di tweet postati nel giorno inserito e nei due precedenti
+	 * @throws MissingCallException
+	 */
+    @GetMapping(value = "/tweet/stats/day")
 	public ResponseEntity<Object> daystats(
 			@RequestParam(name = "day", required = false) Integer day,
 			@RequestParam(name = "month", required = false) Integer month,
@@ -103,8 +153,17 @@ public class Controller {
 		DailyStats ds = new DailyStats(date,call.getTweets());
 		return new ResponseEntity<>(ds.stats(), HttpStatus.OK);
 	}
-
-	@GetMapping(value = "/tweet/stats/geo")
+    
+    /**
+     * Rotta di tipo GET che mostra le statistiche per luogo
+     * @param loc: luogo sul quale si vuole effettuare le statistiche
+     * @return una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia
+     * @throws FileNotFoundException se ci sono problemi riguardanti il file
+     * @throws IOException se si verifica un errore di I/O di qualche tipo
+     * @throws ParseException se si verifica un errore durante il parsing
+     * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+     */
+    @GetMapping(value = "/tweet/stats/geo")
 	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) 
 			throws FileNotFoundException, IOException, ParseException, MissingCallException {
 
@@ -116,6 +175,12 @@ public class Controller {
 		return new ResponseEntity<>(gs.stats(), HttpStatus.OK);
 	}
 
+    /**
+     * Rotta di tipo GET che mostra le statistiche per hashtag
+     * @param hashtag: hashtag scelto sul quale si vuole effetturare una statistica
+     * @return una HashMap con il numero di tweet contenenti l'hashtag inserito
+     * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+     */
 	@GetMapping(value = "/tweet/stats/hash")
 	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) throws MissingCallException {
 
