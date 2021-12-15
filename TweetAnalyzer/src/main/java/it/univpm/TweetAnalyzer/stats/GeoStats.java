@@ -126,7 +126,7 @@ public class GeoStats implements Stats {
 		gen.put("Total tweets downloaded", (float) tweets.size());
 		gen.put("Tweets written in Italy", (float) ita);
 		gen.put("Tweets with unprocessable location", (float) rest);
-		gen.put("Tweets with null location", (float) no);
+		gen.put("Tweets with no location", (float) no);
 		gen.put("Percentage of tweets written in Italy", 100* (float) ita/tweets.size());
 		gen.put("Percentage of tweets with unprocessable location", 100*(float) rest/tweets.size());
 		gen.put("Percentage of tweets with no location", 100* (float) no/tweets.size());
