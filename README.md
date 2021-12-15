@@ -17,6 +17,7 @@
 * [Formato dati](#formato)
 * [Eccezioni](#eccez)
 * [Test](#test)
+* [Conclusione](#concl)
 * [Autori](#autor)
 
 <a name="intro"></a>
@@ -212,3 +213,22 @@ Specifico:
     "Percentage": 0.0
 }
 ```
+
+<a name="eccez"></a>
+## Eccezioni
+
+<a name="test"></a>
+## Test
+
+<a name="concl"></a>
+## Conclusione
+
+<a name="autor"></a>
+## Autori
+
+Progetto realizzato da
+
+* **[Tommaso Fava](https://github.com/ingtommi):** controller, service, stats, readme
+* **[Marco Ciampichetti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
+
+Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate.
