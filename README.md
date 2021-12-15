@@ -181,7 +181,7 @@ Specifico:
 ```
 {
     "Total tweets downloaded": 5.0,
-    "Tweets written in italia": 3.0,
+    "Tweets written in Italia": 3.0,
     "Percentage": 60.0
 }
 ```
