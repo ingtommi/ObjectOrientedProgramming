@@ -23,7 +23,7 @@ import org.json.simple.parser.ParseException;
 
 public class APICall implements APICallService {
 
-	private String apiBase;
+	private static final String apiBase = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?";
 	private String api;
 	private String ht1,ht2,ht3;
 	private int count;
@@ -33,7 +33,7 @@ public class APICall implements APICallService {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 
-	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count, String url) {
+	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {
 			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
@@ -44,7 +44,6 @@ public class APICall implements APICallService {
 		this.met = met.toUpperCase(); //url richiede AND/OR			
 		this.count = count;
 		this.lang = lang;
-		this.apiBase = url;
 	}
 	
 	@Override
