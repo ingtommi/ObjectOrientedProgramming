@@ -130,3 +130,86 @@ Dati relativi ad esempio precedente:
     ]
 }
 ```
+<a name="4"></a>
+### 4. Day filter
+
+Stesso formato dei [Dati]("3") con solo tweet scritti nel giorno indicato
+
+<a name="5"></a>
+### 5. Geo filter
+
+Stesso formato dei [Dati]("3") con solo tweet provenienti dal luogo indicato.
+
+<a name="nota"></a>
+**NOTA:** *In questo caso per essere visualizzato il tweet deve contenere nel luogo la parola inserita. Questo significa che se cerco **Italia** non vedrò tweet con posizione **Milano, Lombardia**!*
+
+<a name="6"></a>
+### 6. Day stats
+
+Tra default e caso specifico non cambia nulla se non i giorni indicati:
+
+```
+{
+    "Total tweets downloaded": 5.0
+    "Tweets written on 2021-12-15": 5.0,
+    "Tweets written on 2021-12-14": 0.0,
+    "Tweets written on 2021-12-13": 0.0,
+    "Percentage": 100.0
+}
+```
+
+<a name="7"></a>
+### 7. Geo stats
+
+Default:
+
+```
+{
+    "Total tweets downloaded": 5.0
+    "Tweets with no location": 2.0,
+    "Tweets with unprocessable location": 0.0
+    "Tweets written in Italy": 3.0,
+    "Percentage of tweets with no location": 40.0,
+    "Percentage of tweets with unprocessable location": 0.0,
+    "Percentage of tweets written in Italy": 60.0
+}
+```
+
+**NOTA:** *Si ha NO LOCATION se nè il tweet nè l'utente hanno fornito informazioni sulla posizione, mentre UNPROCESSABLE LOCATION comprende i tweet in cui la posizione non corrisponde a "Italia", "Italy" oppure nomi di comuni e regioni in **lingua italiana**. Questo significa che **Rome** o **Milan** andranno in questo gruppo!*
+
+Specifico:
+
+```
+{
+    "Total tweets downloaded": 5.0,
+    "Tweets written in italia": 3.0,
+    "Percentage": 60.0
+}
+```
+**NOTA:** *vedi [sopra]("nota")*
+
+<a name="8"></a>
+### 8. Hash stats
+
+Default:
+
+```
+{
+    "Total tweets downloaded": 5.0
+    "Min hashtags per tweet": 2.0,
+    "Max hashtags per tweet": 4.0,
+    "Average hashtags per tweet": 3.0
+}
+```
+
+**NOTA:** *Per problemi dI Twitter può accadere che il valore minimo degli hashtag sia 0 anche se impossibile visto che i tweet sono stati ricercati in base ad almeno 1 hashtag. Purtroppo questo non dipende da noi!*
+
+Specifico:
+
+```
+{
+    "Total tweets downloaded": 5.0,
+    "Tweets containing #univpm": 0.0,
+    "Percentage": 0.0
+}
+```
