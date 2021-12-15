@@ -14,7 +14,8 @@
 * [Introduzione](#intro)
 * [Configurazione](#config)
 * [Rotte](#rotte)
-* [Formato dati](#formato)
+* [Parametri](#param)
+* [Formato](#form)
 * [Eccezioni](#eccez)
 * [Test](#test)
 * [Autori](#autor)
@@ -27,30 +28,24 @@ La funzione principale dell'applicazione è quella di **ricercare tweet in base 
 Come richiesto dalle specifiche assegnate è anche possibile filtrare questi risultati e visualizzare delle statistiche:
 
 * **FILTRI** 
-  * *GIORNO:* vengono restituiti i tweet scritti in uno specifico giorno.
-  * *LUOGO:* vengono restituiti i tweet provenienti da uno specifico luogo.
+  * *[GIORNO](#4):* vengono restituiti i tweet scritti in uno specifico giorno.
+  * *[LUOGO](#5):* vengono restituiti i tweet provenienti da uno specifico luogo.
 
 * **STATISTICHE** 
-  * *GIORNO:* viene restituito il numero di tweet scritto nel giorno specifico e nei due precedenti.
-  * *LUOGO:* viene restituito il numero di tweet provenienti dallo specifico luogo.
-  * *HASHTAG:* viene restituito il numero di tweet contententi lo specifico hashtag.
+  * *[GIORNO](#6):* viene restituito il numero di tweet scritto nel giorno specifico e nei due precedenti.
+  * *[LUOGO](#7):* viene restituito il numero di tweet provenienti dallo specifico luogo.
+  * *[HASHTAG](#8):* viene restituito il numero di tweet contententi lo specifico hashtag.
 
-**NOTA:** non tutti i parametri sono necessari perchè presenti valori di **default**!
-
-* *LINGUA:* it
-* *NUMERO:* 5
-* *GIORNO:* corrente
-* *LUOGO:* Italia (valido solo per statistica, parametro obbligatorio per filtro)
-* *HASHTAG:* nessuno (vengono restituiti massimo, minimo e media di hashtag per tweet)
+**NOTA:** *controlla [parametri]("param") richiesti!*
 
 <a name="config"></a>
 ## Configurazione
 
-Per prima cosa è necessario clonare la repository in locale utilizzando [GitHub Desktop](https://desktop.github.com/) oppure il terminale con il seguente comando:
+Per prima cosa è necessario clonare la repository in locale utilizzando [GitHub Desktop](https://desktop.github.com/) oppure il terminale con il seguente comando
 ```
 git clone https://github.com/ingtommi/ObjectOrientedProgramming
 ```
-fatto questo si può lanciare il progetto come SpringBoot application da un IDE (es. [Eclipse](https://www.eclipse.org/downloads/)) e quando il programma sarà in esecuzione sarà possibile utilizzarlo da un client (es. [Postman](https://www.postman.com/downloads/)) contattando l'indirizzo:
+fatto questo si può lanciare il progetto come SpringBoot application da un IDE (es. [Eclipse](https://www.eclipse.org/downloads/)) e quando il programma sarà in esecuzione sarà possibile utilizzarlo da un client (es. [Postman](https://www.postman.com/downloads/)) contattando l'indirizzo
 ```
 http://localhost:8080
 ```
@@ -69,12 +64,23 @@ N° | Tipo | Rotta | Descrizione
 [7](#7) | ` GET ` | `/tweet/stats/geo` | *restituisce una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia*
 [8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
 
-<a name="formato"></a>
-## Formato dati
+<a name="param"></a>
+## Parametri
 
-<a name="1"></a>
+N° | Parametri | Tipo | Richiesto
+----- | ------------ | -------------------- | ----------------------
+[2](#2) | `hashtag1, hashtag2, hashtag3, count, lang` | *String, String, String, int, String* | *SI, NO, NO, NO, NO*
+[4](#4) | `day, month, year` | *int, int, int* | *NO, NO, NO*
+[5](#5) | `location` | *String* | *SI*
+[6](#6) | `day, month, year` | *int, int, int* | *NO, NO, NO*
+[7](#7) | `location` | *String* | *NO*
+[8](#8) | `hashtag` | *String* | *NO*
+
+<a name="form"></a>
+## Formato
+
+<a name=1></a>
 ### 1. Metadati
-
 ```
 {
     "list": {
@@ -94,7 +100,7 @@ N° | Tipo | Rotta | Descrizione
 }
 ```
 
-<a name="2"></a>
+<a name=2></a>
 ### 2. Salvataggio
 
 Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe cambiato nulla con **and**):
@@ -103,11 +109,10 @@ Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe c
 
 **NOTA:** *Gli **hashtag** vanno inseriti con il # davanti, la **lingua** secondo questi [codici](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)!*
 
-<a name="3"></a>
+<a name=3></a>
 ### 3. Dati
 
 Dati relativi ad esempio precedente:
-
 ```
 {
     "list": [
@@ -132,23 +137,22 @@ Dati relativi ad esempio precedente:
     ]
 }
 ```
-<a name="4"></a>
-### 4. Day filter
+<a name=4></a>
+### 4. Filtro giorno
 
-Stesso formato dei [Dati](#3) con solo tweet scritti nel giorno indicato.
+Stesso formato dei [dati](#3) con solo tweet scritti nel giorno indicato.
 
-<a name="5"></a>
-### 5. Geo filter
+<a name=5></a>
+### 5. Filtro luogo
 
-Stesso formato dei [Dati](#3) con solo tweet provenienti dal luogo indicato.
+Stesso formato dei [dati](#3) con solo tweet provenienti dal luogo indicato.
 
 **NOTA:** *In questo caso per essere visualizzato il tweet deve contenere nel luogo la parola inserita. Questo significa che se cerco **Italia** non vedrò tweet con posizione **Milano, Lombardia**!*
 
-<a name="6"></a>
-### 6. Day stats
+<a name=6></a>
+### 6. Statistiche giorno
 
 Tra default e caso specifico non cambia nulla se non i giorni indicati:
-
 ```
 {
     "Total tweets downloaded": 5.0
@@ -159,11 +163,10 @@ Tra default e caso specifico non cambia nulla se non i giorni indicati:
 }
 ```
 
-<a name="7"></a>
-### 7. Geo stats
+<a name=7></a>
+### 7. Statistiche luogo
 
 Default:
-
 ```
 {
     "Total tweets downloaded": 5.0
@@ -179,7 +182,6 @@ Default:
 **NOTA:** *Si ha NO LOCATION se nè il tweet nè l'utente hanno fornito informazioni sulla posizione, mentre UNPROCESSABLE LOCATION comprende i tweet in cui la posizione non corrisponde a "Italia", "Italy" oppure nomi di comuni e regioni in **lingua italiana**. Questo significa che **Rome** o **Milan** andranno in questo gruppo!*
 
 Specifico:
-
 ```
 {
     "Total tweets downloaded": 5.0,
@@ -189,11 +191,10 @@ Specifico:
 ```
 **NOTA:** *vedi [sopra](#5)*
 
-<a name="8"></a>
-### 8. Hash stats
+<a name=8></a>
+### 8. Statistiche hashtag
 
 Default:
-
 ```
 {
     "Total tweets downloaded": 5.0
@@ -206,7 +207,6 @@ Default:
 **NOTA:** *Per problemi dI Twitter può accadere che il valore minimo degli hashtag sia 0 anche se impossibile visto che i tweet sono stati ricercati in base ad almeno 1 hashtag. Purtroppo questo non dipende da noi!*
 
 Specifico:
-
 ```
 {
     "Total tweets downloaded": 5.0,
@@ -217,6 +217,21 @@ Specifico:
 
 <a name="eccez"></a>
 ## Eccezioni
+
+Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni personalizzate*
+
+* **WrongMethodException:** lanciata se **{method}** diverso da **and** oppure **or**, viene visualizzato il messaggio
+```
+"ERROR: wrong method!"
+```
+* **MissingCallExcpetion:** lanciata se utilizzo altre rotte prima di [salvare i dati](#2), viene visualizzato il messaggio
+```
+"ERROR: first contact http://localhost:8080/tweet/get/{method}"
+```
+* **IsEmptyException:** lanciata se la ricerca non ha raccolto alcun tweet, viene visualizzato il messaggio
+```
+"ERROR: no tweets found!"
+```
 
 <a name="test"></a>
 ## Test
