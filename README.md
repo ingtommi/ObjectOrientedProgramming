@@ -13,7 +13,7 @@
 
 ***Il progetto ha soltanto scopi didattici!*** 
 
-Viene infatti utilizzata un API proxy fornita dal [professore]("prof") che permette di evitare lunghi tempi di verifica account da parte di Twitter e questo rende **impossibile utilizzare l'applicazione con chiavi proprie**. Non sarà però complicato modificare a dovere la [classe](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/main/java/it/univpm/TweetAnalyzer/service/APICall.java) per permettere ciò.
+Viene infatti utilizzata un API proxy fornita dal professore che permette di evitare lunghi tempi di verifica account da parte di Twitter e questo rende **impossibile utilizzare l'applicazione con chiavi proprie**. Non sarà però complicato modificare a dovere la [classe](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/main/java/it/univpm/TweetAnalyzer/service/APICall.java) che gestisce ciò.
 
 Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritti durante gli *ultimi 7 giorni*. Per ulteriori informazioni visitare questo [sito](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) e consultare i piani disponibili.
 
@@ -254,5 +254,4 @@ Progetto realizzato da
 
 Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate. Tutte le specifiche richieste sono state rispettate e sono stati introdotti anche dei **plus** come ad esempio l'*associazione tra il luogo del tweet e i comuni italiani* leggendo da [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/listaComuni.json) o la *statistica per hashtag*.
 
-<a name="prof"></a>
 *Ringraziamo il professor [Emanuele Frontoni](https://www.linkedin.com/in/emanuelefrontoni/) e il suo staff per la disponibilità e i consigli.*
