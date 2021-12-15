@@ -6,20 +6,40 @@ import java.util.HashMap;
 
 import it.univpm.TweetAnalyzer.model.Tweet;
 
+/**
+ * Questa classe implementa l'interfaccia Stats
+ * ed effettua statistiche su tweet giornalieri
+ * @author Marco Ciampichetti
+ * @author Tommaso Fava
+ */
+
 public class DailyStats implements Stats {
-	
+
+	/**
+	 * Attributi di data,tweet e giorno 1,2,3
+	 */
 	private LocalDate date;
 	private ArrayList<Tweet> tweets;
 	int day1 = 0;
 	int day2 = 0;
 	int day3 = 0;
-	
+
+	/**
+	 * Questo è il costruttore
+	 * @param date indica la data selezionata per la statistica in formato LocalDate
+	 * @param tweets indica la lista dei tweet 
+	 */
 	public DailyStats (LocalDate date, ArrayList<Tweet> tweets) {
 		this.date = date;
 		this.tweets = tweets;
 	}
 
 	@Override
+	/**
+	 * Questo metodo serve per scorrere i tweet e trovare quelli scritti nella data selezionata e nei due giorni precedenti 
+	 * @return HashMap  contenente i tweet scaricati, i tweet scritti nella data scelta e nei due giorni precedenti 
+	 * e la percentuale riguardante la somma dei tweet scritti nei tre giorni rispetto a quelli totali
+	 */
 	public HashMap<String,Float> stats() {
 		for(Tweet tweet : tweets) {
 			if(tweet.getDatatime().compareTo(date)==0) {
