@@ -12,19 +12,10 @@ import java.time.LocalDate;
 public class Model {
 
 	/**
-	 * data
+	 * Attributi di Model: data, id, location
 	 */
 	private LocalDate date;
-
-	/**
-	 * numero identificativo
-	 */
-
 	private long id;
-
-	/**
-	 * luogo
-	 */
 	private String location;
 
 	/**
