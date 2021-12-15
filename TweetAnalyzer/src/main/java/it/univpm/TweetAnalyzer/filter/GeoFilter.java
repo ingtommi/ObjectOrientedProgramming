@@ -7,13 +7,28 @@ import org.json.simple.JSONObject;
 
 import it.univpm.TweetAnalyzer.model.*;
 
+/**
+ * Questa classe implementa l'interfaccia Filter
+ * ed effettua filtraggio sui tweet di un luogo scelto
+ * @author Marco Ciampichetti
+ * @author Tommaso Fava
+ */
 
 public class GeoFilter implements Filter {
 
+	/**
+	 * Attributi di luogo, tweet e user
+	 */
 	private String location;
 	private ArrayList<Tweet> tweets;
 	private ArrayList<User> users;
 
+	/**
+	 * Questo è il costruttore
+	 * @param location indica il luogo scelto per effettuare il filtraggio
+	 * @param tweets indica la lista di tweets
+	 * @param users indica la lista di utenti che hanno generato i tweets
+	 */
 	public GeoFilter (String location , ArrayList<Tweet> tweets, ArrayList<User> users) {
 		this.location = location;
 		this.tweets = tweets;
@@ -22,6 +37,10 @@ public class GeoFilter implements Filter {
 
 	@Override
 	@SuppressWarnings("unchecked")
+	/**
+	 * Questo metodo serve per memorizzare in un JSONObject i tweets con localizzazione nel luogo scelto
+	 * @return JSONObject contenente la lista dei tweet localizzati nel luogo selezionato
+	 */
 	public JSONObject filter() {
 
 		JSONObject loc = new JSONObject();
