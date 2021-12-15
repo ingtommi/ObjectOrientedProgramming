@@ -133,7 +133,7 @@ Dati relativi ad esempio precedente:
 <a name="4"></a>
 ### 4. Day filter
 
-Stesso formato dei [Dati](#3) con solo tweet scritti nel giorno indicato
+Stesso formato dei [Dati](#3) con solo tweet scritti nel giorno indicato.
 
 <a name="5"></a>
 ### 5. Geo filter
