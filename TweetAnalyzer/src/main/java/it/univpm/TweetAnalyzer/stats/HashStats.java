@@ -23,7 +23,7 @@ public class HashStats implements Stats{
 
 	/**
 	 * Questo è il costuttore
-	 * @param hashtag indica l'hashtag da trovare nei tweet
+	 * @param hashtag indica l'hashtag da trovare nei tweets
 	 * @param tweets indica i tweets contenenti uno specifico hashtag
 	 */
 	public HashStats (String hashtag, ArrayList<Tweet> tweets) {
@@ -33,7 +33,7 @@ public class HashStats implements Stats{
 
 	@Override
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweet contententi uno specifico hashtag
+	 * Questo metodo serve per memorizzare in una HashMap i tweets contententi uno specifico hashtag
 	 * Ci sono due diverse possibilità nel caso l'hashtag sia scelto o meno per effettuare la statistica
 	 * @return HashMap contenente diversi dati in base alla presenza o meno dell'hashtag scelto
 	 * 
@@ -49,9 +49,9 @@ public class HashStats implements Stats{
 	}
 
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweet contenenti uno specifico hashtag
+	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
 	 * Caso in cui viene scelto un hashtag
-	 * @return HashMap contenente i tweet scaricati, i tweet contenenti l'hastag scelto e la percentuale
+	 * @return HashMap contenente i tweets scaricati, i tweets contenenti l'hastag scelto e la percentuale
 	 */
 	//se hashtag != null
 	private HashMap<String, Float> specific() {
@@ -73,9 +73,9 @@ public class HashStats implements Stats{
 	}
 
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweet contenenti uno specifico hashtag
+	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
 	 * Caso in cui non viene scelto nessun hashtag
-	 * @return HashMap contenente i tweet scaricati, il numero di hastag massimo per tweet, il numero di hastag minimo per tweet
+	 * @return HashMap contenente i tweets scaricati, il numero di hastag massimo per tweet, il numero di hastag minimo per tweet
 	 * e la media deglia hashtag per tweet
 	 */
 

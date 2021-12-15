@@ -17,7 +17,6 @@ public class GeoStats implements Stats {
 	/**
 	 * Attributi di luogo, tweet, utente e città
 	 */
-
 	private String location;
 	private ArrayList<Tweet> tweets;
 	private ArrayList<User> users;
@@ -26,8 +25,8 @@ public class GeoStats implements Stats {
 	/**
 	 * Questo è il costruttore
 	 * @param location indica il luogo su cui si vuole fare la statistica
-	 * @param tweets indica la lista dei tweet
-	 * @param users indica la lista di utenti che hanno generato i tweet
+	 * @param tweets indica la lista di tweets
+	 * @param users indica la lista di utenti che hanno generato i tweets
 	 * @param cities indica la città contenuta in listaComuni.json che verrà confrontata con il luogo
 	 */
 	public GeoStats (String location, ArrayList<Tweet> tweets, ArrayList<User> users, ArrayList<Location> cities) {
@@ -39,11 +38,10 @@ public class GeoStats implements Stats {
 
 	@Override
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweet contenenti il luogo scelto per effettuare la statistica
+	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti il luogo scelto per effettuare la statistica
 	 * Ci sono due diverse possibilità nel caso il luogo sia scelto o meno per fare la statistica
 	 * @return Hashmap contenente diversi dati in base alla presenza o meno della localizzazione
 	 */
-
 	public HashMap<String, Float> stats() {
 
 		HashMap<String, Float> out = new HashMap<String, Float>();
@@ -55,9 +53,9 @@ public class GeoStats implements Stats {
 	}
 
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweet contenenti un luogo specifico 
+	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti un luogo specifico 
 	 * Caso in cui viene scelto un luogo
-	 * @return HashMap contenente i tweet scaricati, i tweet scritti nel luogo scelto e 
+	 * @return HashMap contenente i tweets scaricati, i tweets scritti nel luogo scelto e 
 	 * la percentuale dei tweet in quel luogo rispetto a quelli scaricati
 	 */
 	//se location != null
@@ -85,10 +83,10 @@ public class GeoStats implements Stats {
 	}
 
 	/**
-	 *  Questo metodo serve per memorizzare in una HashMap i tweet contenenti uno luogo specifico
+	 *  Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno luogo specifico
 	 *  Caso in cui non viene scelto nessun luogo
-	 * @return HashMap contenente i tweet scaricati, i tweet scritti in Italia,i tweet con localizzazione non processabile,
-	 *  i tweet senza localizzazione e le rispettive percentuali 
+	 * @return HashMap contenente i tweets scaricati, i tweets scritti in Italia,i tweets con localizzazione non processabile,
+	 *  i tweets senza localizzazione e le rispettive percentuali 
 	 */
 	//se location == null
 	private HashMap<String, Float> general() {

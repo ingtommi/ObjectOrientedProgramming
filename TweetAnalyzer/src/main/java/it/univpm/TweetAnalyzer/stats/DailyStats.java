@@ -36,7 +36,7 @@ public class DailyStats implements Stats {
 
 	@Override
 	/**
-	 * Questo metodo serve per scorrere i tweet e trovare quelli scritti nella data selezionata e nei due giorni precedenti 
+	 * Questo metodo serve per memorizzare in una HashMap i tweets scritti in quella data o nei due giorni precedenti 
 	 * @return HashMap  contenente i tweet scaricati, i tweet scritti nella data scelta e nei due giorni precedenti 
 	 * e la percentuale riguardante la somma dei tweet scritti nei tre giorni rispetto a quelli totali
 	 */

@@ -12,7 +12,7 @@ public interface Stats {
 
 	/**
 	 * Metodo che restituisce una HashMap delle statistiche
-	 * @return stats
+	 * @return HashMap di stats
 	 */
 	public abstract HashMap<String, Float> stats();
 }
