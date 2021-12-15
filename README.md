@@ -15,7 +15,7 @@
 * [Configurazione](#config)
 * [Rotte](#rotte)
 * [Parametri](#param)
-* [Formato](#form)
+* [Formato restituto](#form)
 * [Eccezioni](#eccez)
 * [Test](#test)
 * [Autori](#autor)
@@ -23,7 +23,7 @@
 <a name="intro"></a>
 ## Introduzione
 
-La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno variando il campo {method} della [rotta get](#2). Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
+La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno variando il campo *{method}* della [rotta get](#2). Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
 
 Come richiesto dalle specifiche assegnate è anche possibile filtrare questi risultati e visualizzare delle statistiche:
 
@@ -77,7 +77,7 @@ N° | Parametri | Tipo | Richiesto
 [8](#8) | `hashtag` | *String* | *NO*
 
 <a name="form"></a>
-## Formato
+## Formato restituito
 
 <a name=1></a>
 ### 1. Metadati
