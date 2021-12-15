@@ -45,7 +45,7 @@ Per prima cosa è necessario clonare la repository in locale utilizzando [GitHub
 ```
 git clone https://github.com/ingtommi/ObjectOrientedProgramming
 ```
-fatto questo si può lanciare il progetto come SpringBoot application da un IDE (es. [Eclipse](https://www.eclipse.org/downloads/)) e quando il programma sarà in esecuzione sarà possibile utilizzarlo da un client (es. [Postman](https://www.postman.com/downloads/)) contattando l'indirizzo
+fatto questo si può lanciare il progetto come SpringBoot application da un IDE (es. [Eclipse](https://www.eclipse.org/downloads/)) oppure da [terminale](https://www.appsdeveloperblog.com/run-spring-boot-app-from-a-command-line/) e quando il programma sarà in esecuzione sarà possibile utilizzarlo da un client (es. [Postman](https://www.postman.com/downloads/)) contattando l'indirizzo
 ```
 http://localhost:8080
 ```
