@@ -220,7 +220,7 @@ Specifico:
 
 Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni personalizzate*
 
-* **WrongMethodException:** lanciata se **{method}** diverso da **and** oppure **or**, viene visualizzato il messaggio
+* **WrongMethodException:** lanciata se *{method}* diverso da **and** oppure **or**, viene visualizzato il messaggio
 ```
 "ERROR: wrong method!"
 ```
