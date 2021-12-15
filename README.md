@@ -133,14 +133,13 @@ Dati relativi ad esempio precedente:
 <a name="4"></a>
 ### 4. Day filter
 
-Stesso formato dei [Dati]("3") con solo tweet scritti nel giorno indicato
+Stesso formato dei [Dati](#3) con solo tweet scritti nel giorno indicato
 
 <a name="5"></a>
 ### 5. Geo filter
 
-Stesso formato dei [Dati]("3") con solo tweet provenienti dal luogo indicato.
+Stesso formato dei [Dati](#3) con solo tweet provenienti dal luogo indicato.
 
-<a name="nota"></a>
 **NOTA:** *In questo caso per essere visualizzato il tweet deve contenere nel luogo la parola inserita. Questo significa che se cerco **Italia** non vedrò tweet con posizione **Milano, Lombardia**!*
 
 <a name="6"></a>
@@ -186,7 +185,7 @@ Specifico:
     "Percentage": 60.0
 }
 ```
-**NOTA:** *vedi [sopra]("nota")*
+**NOTA:** *vedi [sopra](#5)*
 
 <a name="8"></a>
 ### 8. Hash stats
