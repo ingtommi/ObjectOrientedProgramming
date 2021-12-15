@@ -101,6 +101,8 @@ Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe c
 
 ![alt_text](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/photo/get.jpg?raw=true)
 
+**NOTA:** *Gli **hashtag** vanno inseriti con il # davanti, la **lingua** secondo questi [codici](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)*
+
 <a name="3"></a>
 ### 3. Dati
 
