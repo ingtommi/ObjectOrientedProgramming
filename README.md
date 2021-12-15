@@ -2,58 +2,131 @@
 <img src="logo.jpg" width="20%" height="20%">
 
 <div align="center">
-
+  
 # TweetAnalyzer@UnivPM
 ## PROGETTO PROGRAMMAZIONE A OGGETTI 2021-2022
-#### Applicazione Java che permette di ricercare tweet in base ad hashtag, filtrare per giorno e provenienza geografica e fare statistiche su giorno, provenienza geografica e hashtag presenti.
-
+#### Applicazione Java che utilizza le [API di Twitter](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets) per fare ricerche in base ad hashtag, filtrare per giorno e provenienza geografica e fare statistiche su giorno, provenienza geografica e hashtag presenti
+  
 </div>
 
-# Rotte applicazione
+# Contenuti
 
-> **GET** /tweet/metadata
+* [Introduzione](#intro)
+* [Configurazione](#config)
+* [Rotte](#rotte)
+* [Formato dati](#formato)
+* [Eccezioni](#eccez)
+* [Test](#test)
+* [Autori](#autor)
 
-Restituisce metadati
+<a name="intro"></a>
+## Introduzione
 
-> **GET** /tweet/get/{method}
+La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno. Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
 
-Permette di scaricare tweet inserendo fino a 3 hashtag e scegliendo se devono esserci tutti con **{method} = and**
-oppure soltanto uno con **{method} = or**. 
+Come richiesto dalle specifiche assegnate è anche possibile filtrare questi risultati e visualizzare delle statistiche:
 
-Inoltre è possibile scegliere la lingua dei tweet e quanti tweet scaricare
+* **FILTRI** 
+  * *GIORNO:* vengono restituiti i tweet scritti in uno specifico giorno.
+  * *LUOGO:* vengono restituiti i tweet provenienti da uno specifico luogo.
 
-**DEFAULT: lingua italiana, 5 tweet restituiti**
+* **STATISTICHE** 
+  * *GIORNO:* viene restituito il numero di tweet scritto nel giorno specifico e nei due precedenti.
+  * *LUOGO:* viene restituito il numero di tweet provenienti dallo specifico luogo.
+  * *HASHTAG:* viene restituito il numero di tweet contententi lo specifico hashtag.
 
-***NOTA: deve essere lanciato prima delle rotte visualizzate di seguito***
+**NOTA:** non tutti i parametri sono necessari perchè presenti valori di **default**!
 
-> **GET** /tweet/data
+* *LINGUA:* it
+* *NUMERO:* 5
+* *GIORNO:* corrente
+* *LUOGO:* italia (valido solo per statistica, parametro obbligatorio per filtro)
+* *HASHTAG:* nessuno (vengono restituiti massimo, minimo e media di hashtag per tweet)
 
-Permette di visualizzare i tweet salvati precedentemente
+<a name="config"></a>
+## Configurazione
 
-> **GET** /tweet/filter/day
+Per prima cosa è necessario clonare la repository in locale utilizzando [GitHub Desktop](https://desktop.github.com/) oppure il terminale con il seguente comando:
+```
+git clone https://github.com/ingtommi/ObjectOrientedProgramming
+```
+fatto questo si può lanciare il progetto come SpringBoot application da un IDE (es. [Eclipse](https://www.eclipse.org/downloads/)) e quando il programma sarà in esecuzione sarà possibile utilizzarlo da un client (es. [Postman](https://www.postman.com/downloads/)) contattando l'indirizzo:
+```
+http://localhost:8080
+```
 
-Permette di visualizzare i tweet scritti nel giorno passato come parametro
+<a name="rotte"></a>
+## Rotte
 
-**DEFAULT: giorno corrente**
+N° | Tipo | Rotta | Descrizione
+----- | ------------ | -------------------- | ----------------------
+[1](#1) | ` GET ` | `/tweet/metadata` | *restituisce un JSONObject contenente le informazioni relative ai tipi di dato visualizzabili*
+[2](#2) | ` GET ` | `/tweet/get/{method}` | *consente di fare la ricerca e salvare i dati e restituisce un messaggio di avvenuto salvataggio*
+[3](#3) | ` GET ` | `/tweet/data` | *restituisce un JSONObject contenente i dati relativi ai tweet precedentemente salvati*
+[4](#4) | ` GET ` | `/tweet/filter/day` | *restituisce un JSONObject contenente i tweet postati nel giorno inserito*
+[5](#5) | ` GET ` | `/tweet/filter/geo` | *restituisce un JSONObject contenente i tweet postati dal luogo inserito*
+[6](#6) | ` GET ` | `/tweet/stats/day` | *restituisce una HashMap con il numero di tweet postati nel giorno inserito e nei due precedenti*
+[7](#7) | ` GET ` | `/tweet/stats/geo` | *restituisce una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia*
+[8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
 
-> **GET** /tweet/filter/geo
+<a name="formato"></a>
+## Formato dati
 
-Permette di visualizzare i tweet provenienti dalla località passata come parametro (se tweet non geolocalizzato si usa posizione utente)
+<a name="1"></a>
+### 1. Metadati
 
-> **GET** /tweet/stats/day
+```
+{
+    "list": {
+        "tweet": {
+            "hashtags": "ArrayList<String>",
+            "created_at": "String",
+            "location": "String",
+            "id": "long"
+        },
+        "user": {
+            "name": "String",
+            "created_at": "String",
+            "location": "String",
+            "id": "long"
+        }
+    }
+}
+```
 
-Permette di avere statistiche sui tweet scritti nel giorno specificato e nei due precedenti
+<a name="2"></a>
+### 2. Salvataggio
 
-**DEFAULT: giorno corrente**
+Esempio con un solo hashtag:
 
-> **GET** /tweet/stats/geo
 
-Permette di avere statistiche sui tweet provenienti dalla specifica località (se tweet non geolocalizzato si usa posizione utente)
 
-**DEFAULT: tweet da Italia leggendo da listaComuni.json**
+<a name="3"></a>
+### 3. Dati
 
-> **GET** /tweet/stats/hash
+Dati relativi ad esempio precedente:
 
-Permette di avere statistiche sui tweet contenenti l'hashtag passato come parametro
-
-**DEFAULT: massimo, minimo e media degli hashtag per tweet**
+```
+{
+    "list": [
+        {
+            "tweet": {
+                "hashtags": [
+                    "Milan",
+                    "Conti",
+                    "Calciomercato"
+                ],
+                "created_at": "2021-12-15",
+                "location": null,
+                "id": 1471074145844744195
+            },
+            "user": {
+                "name": "MilanWorldCommunity",
+                "created_at": "2010-09-11",
+                "location": "Italia",
+                "id": 189583499
+            }
+        }
+    ]
+}
+```
