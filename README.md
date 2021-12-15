@@ -22,7 +22,7 @@
 <a name="intro"></a>
 ## Introduzione
 
-La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno. Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
+La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno variando il campo {method} della [rotta get](#2). Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
 
 Come richiesto dalle specifiche assegnate è anche possibile filtrare questi risultati e visualizzare delle statistiche:
 
@@ -97,7 +97,7 @@ N° | Tipo | Rotta | Descrizione
 <a name="2"></a>
 ### 2. Salvataggio
 
-Esempio con un solo hashtag:
+Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe cambiato nulla con **and**):
 
 ![alt_text](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/photo/get.jpg?raw=true)
 
