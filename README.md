@@ -99,7 +99,7 @@ N° | Tipo | Rotta | Descrizione
 
 Esempio con un solo hashtag:
 
-
+![alt_text](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/photo/get.jpg?raw=true)
 
 <a name="3"></a>
 ### 3. Dati
