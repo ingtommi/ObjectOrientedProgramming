@@ -35,15 +35,14 @@ public class GetData implements GetDataService{
 		this.users = users;
 	}
 
-	/**
-	 * 
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
+
+
 	/**
 	 * Questo metodo permette di visualizzare i metadati 
 	 * @return JSONObject contenente i metadati
 	 */
+	@Override
+	@SuppressWarnings("unchecked")
 	public JSONObject seeMeta() {
 
 		JSONObject meta = new JSONObject();
@@ -70,12 +69,13 @@ public class GetData implements GetDataService{
 		return meta;
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
+
 	/**
 	 * Questo metodo permette di visualizzare i dati
 	 * @return JSONObject contentente i dati 
 	 */
+	@Override
+	@SuppressWarnings("unchecked")
 	public JSONObject seeData() {
 
 		JSONObject data = new JSONObject();
