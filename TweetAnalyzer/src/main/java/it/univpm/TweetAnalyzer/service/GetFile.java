@@ -25,6 +25,9 @@ public class GetFile implements GetFileService {
 	 */
 	ArrayList<Location> cityList = new ArrayList<Location>();
 
+	/**
+	 * Questo è il costruttore di default
+	 */
 	public GetFile() {}
 
 	/**

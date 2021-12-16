@@ -32,6 +32,7 @@ public class User extends Model{
 
 	/**
 	 * Metodo che restituisce il nome dell'utente che ha generato il tweet
+	 * @return stringa che rappresenta il nome utente
 	 */
 	public String getName() { return name; }
 }

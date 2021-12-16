@@ -43,6 +43,15 @@ public class APICall implements APICallService {
 	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	ArrayList<User> users = new ArrayList<User>();
 
+	/**
+	 * Questo è il costruttore
+	 * @param ht1 è il primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
+	 * @param ht2 è il secondo hashtag, non obbligatorio
+	 * @param ht3 è il terzo hashtag, non obbligatorio
+	 * @param met è il metodo per effettuare la ricerca
+	 * @param lang è la lingua della ricerca
+	 * @param count è il numero di risultati che si vuole visualizzare
+	 */
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
 		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
 		if(ht2!=null) {

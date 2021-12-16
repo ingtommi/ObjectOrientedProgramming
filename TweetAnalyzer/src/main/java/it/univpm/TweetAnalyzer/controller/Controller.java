@@ -40,7 +40,7 @@ public class Controller {
 	 * @param met è il metodo per effettuare la ricerca
 	 * @param ht1 è il primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
 	 * @param ht2 è il secondo hashtag, non obbligatorio
-	 * @param ht3è il terzo hashtag, non obbligatorio
+	 * @param ht3 è il terzo hashtag, non obbligatorio
 	 * @param count è il numero di risultati che si vuole visualizzare 
 	 * @param lang è la lingua della ricerca
 	 * @return una stringa che conferma il salvataggio del tweet
@@ -76,9 +76,7 @@ public class Controller {
 	/**
 	 * Rotta di tipo GET che mostra i dati salvati
 	 * 
-	 * @return un JSONObject contenente i dati relativi ai tweet precedentemente salvati
-	 * @throws MissingCallException se prima non viene chiamata la rotta GET
-	 * @return restituisce un JSONObject contenente i dati relativi ai tweet precedentemente salvati
+	 * @return JSONObject contenente i dati relativi ai tweet precedentemente salvati
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
 	 */
 	@GetMapping(value = "/tweet/data")
