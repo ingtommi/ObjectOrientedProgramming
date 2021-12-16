@@ -37,22 +37,17 @@ public class Controller {
 
 	/**
 	 * Rotta di tipo GET che consente di fare la ricerca e salvare i dati e restituisce un messaggio di avvenuto salvataggio
-	 * @param met: metodo di tipo AND o OR utilizzati per effettuare la ricerca
-	 * @param ht1: primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
-	 * @param ht2: secondo hashtag, non obbligatorio
-	 * @param ht3: terzo hashtag, non obbligatorio
-	 * @param count: numero di risultati che si vuole visualizzare 
-	 * @param lang: linguaggio della ricerca
-	 * @return stringa che conferma il salvataggio del tweet
-<<<<<<< HEAD
+	 * 
+	 * @param met è il metodo per effettuare la ricerca
+	 * @param ht1 è il primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
+	 * @param ht2 è il secondo hashtag, non obbligatorio
+	 * @param ht3è il terzo hashtag, non obbligatorio
+	 * @param count è il numero di risultati che si vuole visualizzare 
+	 * @param lang è la lingua della ricerca
+	 * @return una stringa che conferma il salvataggio del tweet
 	 * @throws WrongMethodException se i metodi inseriti sono diversi da and o or
 	 * @throws IsEmptyException se nessun tweet contiene gli hashtag selezionati
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
-=======
-	 * @throws WrongMethodException se i metodi inseriti sono diversi da AND o OR
-	 * @throws IsEmptyException se nessun tweet contiene l hashtag selezionato
-	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
->>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/get/{method}") //method = and/or
 	public ResponseEntity<Object> getData(
@@ -69,6 +64,7 @@ public class Controller {
 
 	/**
 	 * Rotta di tipo GET che mostra i metadati
+	 *
 	 * @return un JSONObject contenente le informazioni relative ai tipi di dato visualizzabili
 	 */
 	@GetMapping(value = "/tweet/metadata")
@@ -79,15 +75,12 @@ public class Controller {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Rotta di tipo GET che mostra i dati salvati
+	 * 
 	 * @return un JSONObject contenente i dati relativi ai tweet precedentemente salvati
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
-=======
-	 * Rotta di tipo GET che mostra i dati
 	 * @return restituisce un JSONObject contenente i dati relativi ai tweet precedentemente salvati
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
->>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/data")
 	public ResponseEntity<Object> seeData() throws MissingCallException {
@@ -101,15 +94,13 @@ public class Controller {
 
 	/**
 	 * Rotta di tipo GET che permette il filtraggio per giorno
+	 * 
 	 * @param day è il giorno selezionato per filtraggio
 	 * @param month è il mese selezionato per filtraggio
 	 * @param year è l'anno selezionato per filtraggio
 	 * @return un JSONObject contenente i tweet postati nel giorno inserito
-<<<<<<< HEAD
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
-=======
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
->>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/filter/day")
 	public ResponseEntity<Object> dayfilter(
@@ -131,6 +122,7 @@ public class Controller {
 
 	/**
 	 * Rotta di tipo GET che permette il filtraggio per luogo
+	 * 
 	 * @param loc è il luogo sul quale si vuole effettuare il filtraggio
 	 * @return un JSONObject contenente i tweet postati dal luogo inserito
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
@@ -147,6 +139,7 @@ public class Controller {
 	
 	/**
 	 * Rotta di tipo GET che mostra le statistiche per il giorno selezionato e i due precedenti
+	 * 
 	 * @param day è il giorno selezionato per effettuare la statistica
 	 * @param month è il mese selezionato per effettuare la statistica
 	 * @param year è l'anno selezionato per effettuare la statistica
@@ -173,6 +166,7 @@ public class Controller {
     
     /**
      * Rotta di tipo GET che mostra le statistiche per luogo
+     * 
      * @param loc è il luogo sul quale si vuole effettuare le statistiche
      * @return una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia
      * @throws FileNotFoundException se ci sono problemi riguardanti il file
@@ -194,6 +188,7 @@ public class Controller {
 
     /**
      * Rotta di tipo GET che mostra le statistiche per hashtag
+     *
      * @param hashtag è quello sul quale si vuole effettuare una statistica
      * @return una HashMap con il numero di tweet contenenti l'hashtag inserito
      * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati

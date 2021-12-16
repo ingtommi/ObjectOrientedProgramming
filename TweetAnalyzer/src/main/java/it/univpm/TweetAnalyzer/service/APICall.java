@@ -51,7 +51,7 @@ public class APICall implements APICallService {
 		if(ht3!=null) {
 			this.ht3 = ht3.replace("#","%23").replaceAll("\\s+","");
 		}
-		this.met = met.toUpperCase(); //url richiede AND/OR			
+		this.met = met; //url richiede and/or			
 		this.count = count;
 		this.lang = lang;
 	}
@@ -77,7 +77,7 @@ public class APICall implements APICallService {
 	@Override
 	public String apiBuild() throws WrongMethodException {
 
-		if (met.equals("AND") || met.equals("OR")) {
+		if (met.equals("and") || met.equals("or")) {
 			if(ht2==null && ht3==null) {
 				api = apiBase + "q=" + ht1 + "&count=" + count +"&lang=" + lang;
 			}

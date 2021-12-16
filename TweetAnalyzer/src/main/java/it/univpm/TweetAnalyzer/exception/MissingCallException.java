@@ -2,11 +2,7 @@ package it.univpm.TweetAnalyzer.exception;
 
 /**
  * Questa classe contiene il metodo che genera un'eccezione quando 
-<<<<<<< HEAD
- * viene inviata una richiesta prima di quella get
-=======
- * vengono lanciate altre rotte prima di salvare i dati
->>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
+ * vengono lanciate altre rotte prima di quella get
  *  
  * @author Marco Ciampichetti
  * @author Tommaso Fava
