@@ -21,8 +21,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Questa classe implementa l'interfaccia APICallService
+ * @author Marco Ciampichetti
+ * @author Tommaso Fava
+ */
+
 public class APICall implements APICallService {
 
+	/**
+	 * Attributi della classe APICallService
+	 */
 	private static final String apiBase = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?";
 	private String api;
 	private String ht1,ht2,ht3;
@@ -45,14 +54,23 @@ public class APICall implements APICallService {
 		this.count = count;
 		this.lang = lang;
 	}
-	
+
 	@Override
+	/**
+	 * Metodo get che fa ritornare una lista di tweets
+	 */
 	public ArrayList<Tweet> getTweets() { return tweets; }
 	@Override
+	/**
+	 * Metodo get che fa ritornare una lista degli utenti
+	 */
 	public ArrayList<User> getUsers() { return users; }
 
-	
+
 	@Override
+	/**
+	 * Questo metodo permette di costruire l'URL per effettuare la ricerca
+	 */ 
 	public String apiBuild() throws WrongMethodException {
 
 		if (met.equals("AND") || met.equals("OR")) {
@@ -78,6 +96,10 @@ public class APICall implements APICallService {
 	}
 
 	@Override
+	/**
+	 * Metodo che permette di salvare i dati trovati
+	 * @return una stringa con conferma di salvataggio avvenuto
+	 */
 	public String saveData() throws WrongMethodException, IsEmptyException {
 
 		String body = "";
@@ -138,10 +160,11 @@ public class APICall implements APICallService {
 		}
 		return "TWEETS SAVED: see at http://localhost:8080/tweet/data";
 	}
-	
-	//trasformo stringa data in formato LocalDate
-	
+
 	@Override
+	/**
+	 * Metodo che permette di convertire la stringa di data in formato LocalDate
+	 */
 	public LocalDate parseData(String created_at) {
 		LocalDate date;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);

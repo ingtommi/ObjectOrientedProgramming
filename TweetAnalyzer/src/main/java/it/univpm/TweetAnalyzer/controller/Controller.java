@@ -44,9 +44,15 @@ public class Controller {
 	 * @param count: numero di risultati che si vuole visualizzare 
 	 * @param lang: linguaggio della ricerca
 	 * @return stringa che conferma il salvataggio del tweet
+<<<<<<< HEAD
 	 * @throws WrongMethodException se i metodi inseriti sono diversi da and o or
 	 * @throws IsEmptyException se nessun tweet contiene gli hashtag selezionati
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
+=======
+	 * @throws WrongMethodException se i metodi inseriti sono diversi da AND o OR
+	 * @throws IsEmptyException se nessun tweet contiene l hashtag selezionato
+	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
+>>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/get/{method}") //method = and/or
 	public ResponseEntity<Object> getData(
@@ -73,9 +79,15 @@ public class Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Rotta di tipo GET che mostra i dati salvati
 	 * @return un JSONObject contenente i dati relativi ai tweet precedentemente salvati
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
+=======
+	 * Rotta di tipo GET che mostra i dati
+	 * @return restituisce un JSONObject contenente i dati relativi ai tweet precedentemente salvati
+	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
+>>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/data")
 	public ResponseEntity<Object> seeData() throws MissingCallException {
@@ -93,7 +105,11 @@ public class Controller {
 	 * @param month è il mese selezionato per filtraggio
 	 * @param year è l'anno selezionato per filtraggio
 	 * @return un JSONObject contenente i tweet postati nel giorno inserito
+<<<<<<< HEAD
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
+=======
+	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
+>>>>>>> eab88fb27b2ce4d10d22e18653893a6849ae95e5
 	 */
 	@GetMapping(value = "/tweet/filter/day")
 	public ResponseEntity<Object> dayfilter(
@@ -117,7 +133,7 @@ public class Controller {
 	 * Rotta di tipo GET che permette il filtraggio per luogo
 	 * @param loc è il luogo sul quale si vuole effettuare il filtraggio
 	 * @return un JSONObject contenente i tweet postati dal luogo inserito
-	 * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
 	 */
 	@GetMapping(value = "/tweet/filter/geo")
 	public ResponseEntity<Object> geofilter(@RequestParam(name = "location") String loc) throws MissingCallException {
@@ -135,7 +151,7 @@ public class Controller {
 	 * @param month è il mese selezionato per effettuare la statistica
 	 * @param year è l'anno selezionato per effettuare la statistica
 	 * @return una HashMap con il numero di tweet postati nel giorno inserito e nei due precedenti
-	 * @throws MissingCallException
+	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
 	 */
     @GetMapping(value = "/tweet/stats/day")
 	public ResponseEntity<Object> daystats(
@@ -162,7 +178,7 @@ public class Controller {
      * @throws FileNotFoundException se ci sono problemi riguardanti il file
      * @throws IOException se si verifica un errore di I/O di qualche tipo
      * @throws ParseException se si verifica un errore durante il parsing
-     * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+     * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
      */
     @GetMapping(value = "/tweet/stats/geo")
 	public ResponseEntity<Object> geostats(@RequestParam(name = "location", required = false) String loc) 
@@ -180,7 +196,7 @@ public class Controller {
      * Rotta di tipo GET che mostra le statistiche per hashtag
      * @param hashtag è quello sul quale si vuole effettuare una statistica
      * @return una HashMap con il numero di tweet contenenti l'hashtag inserito
-     * @throws MissingCallException se prima di DATA non viene chiamata la rotta GET
+     * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
      */
 	@GetMapping(value = "/tweet/stats/hash")
 	public ResponseEntity<Object> hashstats(@RequestParam(name = "hashtag", required = false) String hashtag) throws MissingCallException {
