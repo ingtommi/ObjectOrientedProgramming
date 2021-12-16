@@ -3,7 +3,6 @@ package it.univpm.TweetAnalyzer.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
@@ -112,7 +111,7 @@ public class Controller {
 		if(day == null || month == null || year == null) {
 			date = LocalDate.now();
 		}
-		else date = LocalDate.of(year,Month.of(month),day);
+		else date = LocalDate.of(year,month,day);
 		if(call==null) {
 			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
 		}
@@ -156,7 +155,7 @@ public class Controller {
 		if(day == null || month == null || year == null) {
 			date = LocalDate.now();
 		}
-		else date = LocalDate.of(year,Month.of(month),day);
+		else date = LocalDate.of(year,month,day);
 		if(call==null) {
 			throw new MissingCallException("ERROR: first contact http://localhost:8080/tweet/get/{method}");
 		}

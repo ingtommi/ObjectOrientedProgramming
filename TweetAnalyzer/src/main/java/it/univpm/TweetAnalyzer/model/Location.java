@@ -48,16 +48,4 @@ public class Location {
 	 * @return region
 	 */
 	public String getRegion() { return region; }
-	
-	/**
-	 * Metodo toString utilizzato per i test
-	 * 
-	 * @return una stringa
-	 */
-	
-	@Override
-	public String toString() {
-		
-		return "Città: " + this.city + " | Provincia: " + this.province + " | Regione: " + this.region;
-	}
 }
