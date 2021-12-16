@@ -16,6 +16,7 @@ import it.univpm.TweetAnalyzer.service.APICall;
 
 /**
  * Questa classe contiene dei test per verificare il corretto funzionamento di alcune parti del programma
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -26,6 +27,11 @@ class Tests {
 	private APICall c1,c2;
 	private String created_at;
 
+	/**
+	 * Questo metodo inizializza gli attributi
+	 * 
+	 * @throws Exception
+	 */
 	@BeforeEach
 	void setUp() throws Exception {
 
@@ -34,11 +40,17 @@ class Tests {
 		created_at = "Sun Feb 25 18:11:01 +0000 2018";
 	}
 
+	/**
+	 * Questo metodo distrugge gli attributi
+	 * 
+	 * @throws Exception
+	 */
 	@AfterEach
 	void tearDown() throws Exception {}
 
 	/**
 	 * Questo test verifica la correttezza dell'url
+	 * 
 	 * @throws WrongMethodException se i metodi inseriti sono diversi da AND o OR
 	 */
 	@Test
