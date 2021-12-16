@@ -17,7 +17,7 @@ Viene infatti utilizzata un API proxy fornita dal professore che permette di evi
 
 Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritti durante gli *ultimi 7 giorni*. Per ulteriori informazioni visitare questo [sito](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) e consultare i piani disponibili.
 
-# Contenuti
+# Contenuti :open_file_folder:
 
 * [Introduzione](#intro)
 * [Configurazione](#config)
@@ -76,7 +76,7 @@ N° | Tipo | Rotta | Descrizione
 [8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
 
 <a name="param"></a>
-## Parametri :open_file_folder:
+## Parametri :pencil:
 
 N° | Parametri | Tipo | Richiesto
 ----- | ------------ | -------------------- | ----------------------
