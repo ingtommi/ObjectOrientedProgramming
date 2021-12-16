@@ -9,7 +9,7 @@
   
 </div>
 
-# Avvertenze
+# Avvertenze :warning:
 
 ***Il progetto ha soltanto scopi didattici!*** 
 
@@ -29,7 +29,7 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Autori](#autor)
 
 <a name="intro"></a>
-## Introduzione
+## Introduzione :mega:
 
 La funzione principale dell'applicazione è quella di **ricercare tweet in base ad hashtag** passati come parametro: se ne possono inserire da uno fino a tre e scegliere se devono essere presenti tutti quanti o ne basta uno variando il campo *{method}* della [rotta get](#2). Inoltre è possibile **distinguere per lingua** e **decidere il numero di tweet visualizzabili**.
 
@@ -47,7 +47,7 @@ Come richiesto dalle specifiche assegnate è anche possibile filtrare questi ris
 **NOTA:** *controlla [parametri]("param") richiesti!*
 
 <a name="config"></a>
-## Configurazione
+## Configurazione :key:
 
 Per prima cosa è necessario clonare la repository in locale utilizzando [GitHub Desktop](https://desktop.github.com/) oppure il terminale con il seguente comando
 ```
@@ -58,8 +58,10 @@ fatto questo si può lanciare il progetto come SpringBoot application da un IDE 
 http://localhost:8080
 ```
 
+**NOTA:** *la porta può essere modificata a piacere variando questo [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/main/resources/application.properties)!*
+
 <a name="rotte"></a>
-## Rotte
+## Rotte :globe_with_meridians:
 
 N° | Tipo | Rotta | Descrizione
 ----- | ------------ | -------------------- | ----------------------
@@ -73,7 +75,7 @@ N° | Tipo | Rotta | Descrizione
 [8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
 
 <a name="param"></a>
-## Parametri
+## Parametri :open_file_folder:
 
 N° | Parametri | Tipo | Richiesto
 ----- | ------------ | -------------------- | ----------------------
@@ -85,7 +87,7 @@ N° | Parametri | Tipo | Richiesto
 [8](#8) | `hashtag` | *String* | *NO*
 
 <a name="form"></a>
-## Formato restituito
+## Formato restituito :clipboard:
 
 <a name=1></a>
 ### 1. Metadati
@@ -224,9 +226,9 @@ Specifico:
 ```
 
 <a name="eccez"></a>
-## Eccezioni
+## Eccezioni :x:
 
-Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni personalizzate*
+Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni personalizzate* spiegate di seguito e consultabili [qui](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/TweetAnalyzer/src/main/java/it/univpm/TweetAnalyzer/exception).
 
 * **WrongMethodException:** lanciata se *{method}* diverso da **and** oppure **or**, viene visualizzato il messaggio
 ```
@@ -242,7 +244,7 @@ Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni 
 ```
 
 <a name="test"></a>
-## Test
+## Test :question:
 
 Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabili [qui](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/test/java/it/univpm/TweetAnalyzer/tests/Tests.java). Nel dettaglio:
 
@@ -251,7 +253,7 @@ Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabil
 * **Test 3:** controllo correttezza lancio eccezione WrongMethodException
 
 <a name="autor"></a>
-## Autori
+## Autori :busts_in_silhouette:
 
 Progetto realizzato da
 
