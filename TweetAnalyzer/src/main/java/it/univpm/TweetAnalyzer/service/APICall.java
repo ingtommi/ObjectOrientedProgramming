@@ -55,22 +55,25 @@ public class APICall implements APICallService {
 		this.lang = lang;
 	}
 
-	@Override
+
 	/**
 	 * Metodo get che fa ritornare una lista di tweets
 	 */
-	public ArrayList<Tweet> getTweets() { return tweets; }
 	@Override
+	public ArrayList<Tweet> getTweets() { return tweets; }
+
 	/**
 	 * Metodo get che fa ritornare una lista degli utenti
 	 */
+	@Override
 	public ArrayList<User> getUsers() { return users; }
 
 
-	@Override
+
 	/**
 	 * Questo metodo permette di costruire l'URL per effettuare la ricerca
-	 */ 
+	 */
+	@Override
 	public String apiBuild() throws WrongMethodException {
 
 		if (met.equals("AND") || met.equals("OR")) {
@@ -95,11 +98,12 @@ public class APICall implements APICallService {
 		return api;
 	}
 
-	@Override
+
 	/**
 	 * Metodo che permette di salvare i dati trovati
 	 * @return una stringa con conferma di salvataggio avvenuto
 	 */
+	@Override
 	public String saveData() throws WrongMethodException, IsEmptyException {
 
 		String body = "";
@@ -161,10 +165,11 @@ public class APICall implements APICallService {
 		return "TWEETS SAVED: see at http://localhost:8080/tweet/data";
 	}
 
-	@Override
+
 	/**
 	 * Metodo che permette di convertire la stringa di data in formato LocalDate
 	 */
+	@Override
 	public LocalDate parseData(String created_at) {
 		LocalDate date;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);

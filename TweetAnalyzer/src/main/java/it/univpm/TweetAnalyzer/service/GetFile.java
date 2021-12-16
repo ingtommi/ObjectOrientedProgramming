@@ -11,12 +11,25 @@ import org.json.simple.parser.ParseException;
 
 import it.univpm.TweetAnalyzer.model.Location;
 
+/**
+ * Questa classe implementa l'interfaccia GetFileService
+ * @author Marco Ciampichetti
+ * @author Tommaso Fava
+ * 
+ */
 public class GetFile implements GetFileService {
 
+	/**
+	 * Attributo di GetFile: lista di città
+	 */
 	ArrayList<Location> cityList = new ArrayList<Location>();
 
 	public GetFile() {}
 
+	/**
+	 * Metodo che permette di leggere da file contenente tutti i comuni italiani con le rispettive province e regioni 
+	 * e inserire in una lista
+	 */
 	@Override
 	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
