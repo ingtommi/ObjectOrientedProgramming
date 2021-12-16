@@ -20,7 +20,7 @@ public class Model {
 	private String location;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
 	 * @param date sta ad indicare la data
 	 * @param id sta ad indicare il numero di riconoscimento

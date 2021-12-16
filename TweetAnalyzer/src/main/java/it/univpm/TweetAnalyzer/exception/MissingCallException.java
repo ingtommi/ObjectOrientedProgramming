@@ -14,7 +14,7 @@ public class MissingCallException extends Exception{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Questo è il costruttore di default
+	 * Costruttore di default
 	 */
 	public MissingCallException() {
 		super();

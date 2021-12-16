@@ -24,12 +24,12 @@ public class GeoStats implements Stats {
 	ArrayList<Location> cities;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
-	 * @param location indica il luogo su cui si vuole fare la statistica
-	 * @param tweets indica la lista di tweets
-	 * @param users indica la lista di utenti che hanno generato i tweets
-	 * @param cities indica la città contenuta in listaComuni.json che verrà confrontata con il luogo
+	 * @param location luogo su cui si vuole fare la statistica
+	 * @param tweets lista di tweets
+	 * @param users lista di utenti che hanno generato i tweets
+	 * @param cities lista di città contenuta in listaComuni.json che verrà confrontata con il luogo
 	 */
 	public GeoStats (String location, ArrayList<Tweet> tweets, ArrayList<User> users, ArrayList<Location> cities) {
 		this.location = location;

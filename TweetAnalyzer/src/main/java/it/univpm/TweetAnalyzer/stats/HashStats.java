@@ -23,7 +23,7 @@ public class HashStats implements Stats{
 	private ArrayList<Tweet> tweets;
 
 	/**
-	 * Questo è il costuttore
+	 * Costuttore
 	 * 
 	 * @param hashtag indica l'hashtag da trovare nei tweets
 	 * @param tweets indica i tweets scaricati

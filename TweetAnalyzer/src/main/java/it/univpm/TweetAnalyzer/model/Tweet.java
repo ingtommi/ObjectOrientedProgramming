@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Questa è una classe che estende Model e 
+ * Classe che estende Model e 
  * modella il tweet che si ottiene nella ricerca
  * 
  * @author Marco Ciampichetti
@@ -19,7 +19,7 @@ public class Tweet extends Model {
 	private ArrayList<String> hashtags;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
 	 * @param date sta ad indicare la data del tweet
 	 * @param id sta ad indicare il numero identificativo del tweet

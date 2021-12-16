@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"it.univpm.TweetAnalyzer.controller"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"it.univpm.TweetAnalyzer"},{"l":"it.univpm.TweetAnalyzer.controller"},{"l":"it.univpm.TweetAnalyzer.exception"},{"l":"it.univpm.TweetAnalyzer.filter"},{"l":"it.univpm.TweetAnalyzer.model"},{"l":"it.univpm.TweetAnalyzer.service"},{"l":"it.univpm.TweetAnalyzer.stats"},{"l":"it.univpm.TweetAnalyzer.tests"}];updateSearchResults();

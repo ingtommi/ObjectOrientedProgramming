@@ -25,7 +25,7 @@ public class GeoFilter implements Filter {
 	private ArrayList<User> users;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * @param location indica il luogo scelto per effettuare il filtraggio
 	 * @param tweets indica la lista di tweets salvati
 	 * @param users indica la lista di utenti associati ai tweet

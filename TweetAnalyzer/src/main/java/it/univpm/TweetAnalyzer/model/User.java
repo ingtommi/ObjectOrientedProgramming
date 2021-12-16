@@ -3,7 +3,7 @@ package it.univpm.TweetAnalyzer.model;
 import java.time.LocalDate;
 
 /**
- * Questa è una classe che estende Model e 
+ * Classe che estende Model e 
  * modella l'utente del tweet che si ottiene nella ricerca
  * 
  * @author Marco Ciampichetti
@@ -18,7 +18,7 @@ public class User extends Model{
 	private String name;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
 	 * @param date sta ad indicare la data di creazione del profilo utente
 	 * @param id sta ad indicare il numero identificativo dell'utente

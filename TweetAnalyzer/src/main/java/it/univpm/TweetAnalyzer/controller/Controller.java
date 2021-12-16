@@ -37,12 +37,12 @@ public class Controller {
 	/**
 	 * Rotta di tipo GET che consente di fare la ricerca e salvare i dati e restituisce un messaggio di avvenuto salvataggio
 	 * 
-	 * @param met è il metodo per effettuare la ricerca
-	 * @param ht1 è il primo hashtag, è obbligatorio inserirlo per poter effettuare la ricerca
-	 * @param ht2 è il secondo hashtag, non obbligatorio
-	 * @param ht3 è il terzo hashtag, non obbligatorio
-	 * @param count è il numero di risultati che si vuole visualizzare 
-	 * @param lang è la lingua della ricerca
+	 * @param met il metodo per effettuare la ricerca
+	 * @param ht1 il primo hashtag, obbligatorio inserirlo per poter effettuare la ricerca
+	 * @param ht2 il secondo hashtag, non obbligatorio
+	 * @param ht3 il terzo hashtag, non obbligatorio
+	 * @param count il numero di risultati che si vuole visualizzare 
+	 * @param lang la lingua della ricerca
 	 * @return una stringa che conferma il salvataggio del tweet
 	 * @throws WrongMethodException se i metodi inseriti sono diversi da and o or
 	 * @throws IsEmptyException se nessun tweet contiene gli hashtag selezionati
@@ -92,9 +92,9 @@ public class Controller {
 	/**
 	 * Rotta di tipo GET che permette il filtraggio per giorno
 	 * 
-	 * @param day è il giorno selezionato per filtraggio
-	 * @param month è il mese selezionato per filtraggio
-	 * @param year è l'anno selezionato per filtraggio
+	 * @param day il giorno selezionato per filtraggio
+	 * @param month il mese selezionato per filtraggio
+	 * @param year l'anno selezionato per filtraggio
 	 * @return un JSONObject contenente i tweet postati nel giorno inserito
 	 * @throws MissingCallException se prima non viene chiamata la rotta GET
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
@@ -120,7 +120,7 @@ public class Controller {
 	/**
 	 * Rotta di tipo GET che permette il filtraggio per luogo
 	 * 
-	 * @param loc è il luogo sul quale si vuole effettuare il filtraggio
+	 * @param loc il luogo sul quale si vuole effettuare il filtraggio
 	 * @return un JSONObject contenente i tweet postati dal luogo inserito
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
 	 */
@@ -137,9 +137,9 @@ public class Controller {
 	/**
 	 * Rotta di tipo GET che mostra le statistiche per il giorno selezionato e i due precedenti
 	 * 
-	 * @param day è il giorno selezionato per effettuare la statistica
-	 * @param month è il mese selezionato per effettuare la statistica
-	 * @param year è l'anno selezionato per effettuare la statistica
+	 * @param day il giorno selezionato per effettuare la statistica
+	 * @param month il mese selezionato per effettuare la statistica
+	 * @param year l'anno selezionato per effettuare la statistica
 	 * @return una HashMap con il numero di tweet postati nel giorno inserito e nei due precedenti
 	 * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
 	 */
@@ -164,7 +164,7 @@ public class Controller {
     /**
      * Rotta di tipo GET che mostra le statistiche per luogo
      * 
-     * @param loc è il luogo sul quale si vuole effettuare le statistiche
+     * @param loc il luogo sul quale si vuole effettuare le statistiche
      * @return una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia
      * @throws FileNotFoundException se ci sono problemi riguardanti il file
      * @throws IOException se si verifica un errore di I/O di qualche tipo
@@ -186,7 +186,7 @@ public class Controller {
     /**
      * Rotta di tipo GET che mostra le statistiche per hashtag
      *
-     * @param hashtag è quello sul quale si vuole effettuare una statistica
+     * @param hashtag quello sul quale si vuole effettuare una statistica
      * @return una HashMap con il numero di tweet contenenti l'hashtag inserito
      * @throws MissingCallException se si utilizzano altre rotte prima di salvare i dati
      */

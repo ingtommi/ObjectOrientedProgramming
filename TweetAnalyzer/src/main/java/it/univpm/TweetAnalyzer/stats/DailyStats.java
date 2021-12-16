@@ -26,7 +26,7 @@ public class DailyStats implements Stats {
 	int day3 = 0;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
 	 * @param date indica la data selezionata per la statistica in formato LocalDate
 	 * @param tweets indica la lista dei tweet 

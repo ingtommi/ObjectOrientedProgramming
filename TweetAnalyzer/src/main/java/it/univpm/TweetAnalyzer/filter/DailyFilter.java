@@ -25,7 +25,7 @@ public class DailyFilter implements Filter {
 	private ArrayList<Tweet> tweets;
 
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * @param date indica la data selezionata per filtrare
 	 * @param tweets indica la lista dei tweet salvati
 	 */

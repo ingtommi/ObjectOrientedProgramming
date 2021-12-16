@@ -1,1 +1,8 @@
+it.univpm.TweetAnalyzer
 it.univpm.TweetAnalyzer.controller
+it.univpm.TweetAnalyzer.exception
+it.univpm.TweetAnalyzer.filter
+it.univpm.TweetAnalyzer.model
+it.univpm.TweetAnalyzer.service
+it.univpm.TweetAnalyzer.stats
+it.univpm.TweetAnalyzer.tests

@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 
 /**
  * Questa interfaccia viene utilizzata per i diversi filtri
- * Si è scelto di inserire un solo metodo perchè il tipo e i parametri sono gli stessi per tutte le classi specifiche
+ * Scelta di inserire un solo metodo perchè il tipo e i parametri sono gli stessi per tutte le classi specifiche
  * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava

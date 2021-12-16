@@ -16,7 +16,7 @@ public class Location {
 	private String region;
 	
 	/**
-	 * Questo è il costruttore
+	 * Costruttore
 	 * 
 	 * @param city indica la città
 	 * @param province indica la provincia

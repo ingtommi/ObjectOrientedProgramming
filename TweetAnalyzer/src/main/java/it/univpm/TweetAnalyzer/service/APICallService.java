@@ -43,7 +43,7 @@ public interface APICallService {
 	 * Metodo che restituisce una stringa che conferma il salvataggio
 	 * 
 	 * @return stringa con conferma di salvataggio avvenuto
-	 * @throws WrongMethodException se i metodi inseriti sono diversi da and o or
+	 * @throws WrongMethodException se i metodi inseriti sono diversi da AND o OR
 	 * @throws IsEmptyException se la ricerca non ha raccolto alcun tweet
 	 */
 	public abstract String saveData() throws WrongMethodException, IsEmptyException;
@@ -51,7 +51,7 @@ public interface APICallService {
 	/**
 	 * Metodo che converte la stringa della data in LocalDate
 	 * 
-	 * @param created_at è la stringa che rappresenta la data
+	 * @param created_at stringa che rappresenta la data
 	 * @return data in formato LocalDate 
 	 */
 	public abstract LocalDate parseData(String created_at);

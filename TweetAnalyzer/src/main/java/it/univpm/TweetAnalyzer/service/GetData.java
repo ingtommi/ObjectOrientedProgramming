@@ -25,12 +25,12 @@ public class GetData implements GetDataService{
 	private ArrayList<User> users;
 
 	/**
-	 * Questo è il costruttore di default e viene utilizzato per i metadati
+	 * Costruttore di default e viene utilizzato per i metadati
 	 */
 	public GetData() {}
 
 	/**
-	 * Questo è il costruttore e viene utilizzato per i dati
+	 * Costruttore e viene utilizzato per i dati
 	 * 
 	 * @param tweets è la lista dei tweet
 	 * @param users è la lista di utenti
