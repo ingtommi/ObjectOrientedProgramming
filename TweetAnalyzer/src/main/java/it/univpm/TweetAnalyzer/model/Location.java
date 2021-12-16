@@ -2,6 +2,7 @@ package it.univpm.TweetAnalyzer.model;
 
 /**
  * Questa classe rappresenta il luogo dove si trova l'utente
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  *
@@ -17,6 +18,7 @@ public class Location {
 	
 	/**
 	 * Questo è il costruttore
+	 * 
 	 * @param city indica la città
 	 * @param province indica la provincia
 	 * @param region indica la regione
@@ -29,18 +31,21 @@ public class Location {
 
 	/**
 	 * Metodo che restituisce la città come stringa
+	 * 
 	 * @return city
 	 */
 	public String getCity() { return city; }
 	
 	/**
 	 * Metodo che restituisce la provincia come stringa
+	 * 
 	 * @return province
 	 */
 	public String getProvince() { return province; }
 	
 	/**
 	 * Metodo che restituisce la regione come stringa
+	 * 
 	 * @return region
 	 */
 	public String getRegion() { return region; }

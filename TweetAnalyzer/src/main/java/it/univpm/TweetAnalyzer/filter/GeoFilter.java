@@ -10,6 +10,7 @@ import it.univpm.TweetAnalyzer.model.*;
 /**
  * Questa classe implementa l'interfaccia Filter
  * ed effettua filtraggio sui tweet di un luogo scelto
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -26,8 +27,8 @@ public class GeoFilter implements Filter {
 	/**
 	 * Questo è il costruttore
 	 * @param location indica il luogo scelto per effettuare il filtraggio
-	 * @param tweets indica la lista di tweets
-	 * @param users indica la lista di utenti che hanno generato i tweets
+	 * @param tweets indica la lista di tweets salvati
+	 * @param users indica la lista di utenti associati ai tweet
 	 */
 	public GeoFilter (String location , ArrayList<Tweet> tweets, ArrayList<User> users) {
 		this.location = location;
@@ -35,12 +36,13 @@ public class GeoFilter implements Filter {
 		this.users = users;
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
 	/**
 	 * Questo metodo serve per memorizzare in un JSONObject i tweets con localizzazione nel luogo scelto
-	 * @return JSONObject contenente la lista dei tweet localizzati nel luogo selezionato
+	 * 
+	 * @return un JSONObject contenente la lista dei tweet localizzati nel luogo selezionato
 	 */
+	@Override
+	@SuppressWarnings("unchecked")
 	public JSONObject filter() {
 
 		JSONObject loc = new JSONObject();
@@ -74,7 +76,6 @@ public class GeoFilter implements Filter {
 				}
 				loc.put("tweets written in " + location, list);
 			}
-
 		}
 		return loc;
 	}

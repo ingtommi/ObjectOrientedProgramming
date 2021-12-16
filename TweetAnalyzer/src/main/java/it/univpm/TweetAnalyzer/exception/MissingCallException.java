@@ -2,7 +2,7 @@ package it.univpm.TweetAnalyzer.exception;
 
 /**
  * Questa classe contiene il metodo che genera un'eccezione quando 
- * viene inviata la richiesta data prima di quella get
+ * viene inviata una richiesta prima di quella get
  *  
  * @author Marco Ciampichetti
  * @author Tommaso Fava
@@ -21,7 +21,7 @@ public class MissingCallException extends Exception{
 	}
 
 	/**
-	 * @param message sta ad indicare il messaggio di errore
+	 * @param message indica il messaggio di errore
 	 */
 	public MissingCallException(String message) {
 		super(message);

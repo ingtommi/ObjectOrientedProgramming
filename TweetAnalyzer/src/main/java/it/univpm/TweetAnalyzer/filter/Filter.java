@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 
 /**
  * Questa interfaccia viene utilizzata per i diversi filtri
+ * Si è scelto di inserire un solo metodo perchè il tipo e i parametri sono gli stessi per tutte le classi specifiche
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -11,8 +13,9 @@ import org.json.simple.JSONObject;
 public interface Filter {
 
 	/**
-	 * Metodo che restituisce un JSONObject dei filtri
-	 * @return JSONObject di filter
+	 * Metodo che restituisce un JSONObject con i dati filtrati
+	 * 
+	 * @return un JSONObject contenente i dati filtrati
 	 */
 	public abstract JSONObject filter();
 }

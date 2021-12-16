@@ -8,7 +8,8 @@ import it.univpm.TweetAnalyzer.model.Tweet;
 
 /**
  * Questa classe implementa l'interfaccia Stats 
- * ed effettua statistiche in base agli hashtag
+ * ed effettua statistiche in base ad un hashtag
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -16,28 +17,30 @@ import it.univpm.TweetAnalyzer.model.Tweet;
 public class HashStats implements Stats{
 
 	/**
-	 * Attributi di HashStats: hashtag e tweets
+	 * Attributi di hashtag e tweets
 	 */
 	String hashtag;
 	private ArrayList<Tweet> tweets;
 
 	/**
 	 * Questo è il costuttore
+	 * 
 	 * @param hashtag indica l'hashtag da trovare nei tweets
-	 * @param tweets indica i tweets contenenti uno specifico hashtag
+	 * @param tweets indica i tweets scaricati
 	 */
 	public HashStats (String hashtag, ArrayList<Tweet> tweets) {
 		this.hashtag = hashtag;
 		this.tweets = tweets;
 	}
 
-	@Override
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contententi uno specifico hashtag
-	 * Ci sono due diverse possibilità nel caso l'hashtag sia scelto o meno per effettuare la statistica
+	 * Ci sono due diverse possibilità a seconda che l'hashtag sia insertito o meno
+	 * 
 	 * @return HashMap contenente diversi dati in base alla presenza o meno dell'hashtag scelto
 	 * 
 	 */
+	@Override
 	public HashMap<String, Float> stats() {
 
 		HashMap<String, Float> out = new HashMap<String, Float>();
@@ -50,10 +53,10 @@ public class HashStats implements Stats{
 
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
-	 * Caso in cui viene scelto un hashtag
+	 * Caso in cui viene inserito il parametro
+	 * 
 	 * @return HashMap contenente i tweets scaricati, i tweets contenenti l'hastag scelto e la percentuale
 	 */
-	//se hashtag != null
 	private HashMap<String, Float> specific() {
 
 		int tot = 0;
@@ -74,9 +77,9 @@ public class HashStats implements Stats{
 
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
-	 * Caso in cui non viene scelto nessun hashtag
-	 * @return HashMap contenente i tweets scaricati, il numero di hastag massimo per tweet, il numero di hastag minimo per tweet
-	 * e la media deglia hashtag per tweet
+	 * Caso di default in cui non viene inserito il parametro
+	 * 
+	 * @return HashMap contenente i tweets scaricati, il numero massimo e minimo degli hashtag per tweet e la loro media
 	 */
 
 	//se hashthag == null

@@ -8,6 +8,7 @@ import it.univpm.TweetAnalyzer.model.*;
 /**
  * Questa classe implementa l'interfaccia Stats
  * ed effettua statistiche sulla geolocalizzazione
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -24,6 +25,7 @@ public class GeoStats implements Stats {
 
 	/**
 	 * Questo è il costruttore
+	 * 
 	 * @param location indica il luogo su cui si vuole fare la statistica
 	 * @param tweets indica la lista di tweets
 	 * @param users indica la lista di utenti che hanno generato i tweets
@@ -36,12 +38,13 @@ public class GeoStats implements Stats {
 		this.cities = cities;
 	}
 
-	@Override
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti il luogo scelto per effettuare la statistica
-	 * Ci sono due diverse possibilità nel caso il luogo sia scelto o meno per fare la statistica
+	 * Ci sono due due possibilità nel a seconda che venga passato oppure no un luogo
+	 * 
 	 * @return Hashmap contenente diversi dati in base alla presenza o meno della localizzazione
 	 */
+	@Override
 	public HashMap<String, Float> stats() {
 
 		HashMap<String, Float> out = new HashMap<String, Float>();
@@ -53,12 +56,12 @@ public class GeoStats implements Stats {
 	}
 
 	/**
-	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti un luogo specifico 
-	 * Caso in cui viene scelto un luogo
+	 * Questo metodo serve per memorizzare in una HashMap il numero di tweets provenienti da luogo specifico 
+	 * Caso in cui viene inserito il parametro
+	 * 
 	 * @return HashMap contenente i tweets scaricati, i tweets scritti nel luogo scelto e 
-	 * la percentuale dei tweet in quel luogo rispetto a quelli scaricati
+	 * la percentuale di questi rispetto al totale
 	 */
-	//se location != null
 	private HashMap<String, Float> specific() {
 
 		int tot = 0;
@@ -83,12 +86,12 @@ public class GeoStats implements Stats {
 	}
 
 	/**
-	 *  Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno luogo specifico
-	 *  Caso in cui non viene scelto nessun luogo
-	 * @return HashMap contenente i tweets scaricati, i tweets scritti in Italia,i tweets con localizzazione non processabile,
+	 *  Questo metodo serve per memorizzare in una HashMap i tweets provenienti dall'Italia
+	 *  Caso di default in cui non viene inserito nessun parametro
+	 *  
+	 *  @return HashMap contenente i tweets scaricati, i tweets scritti in Italia, i tweets con localizzazione non processabile,
 	 *  i tweets senza localizzazione e le rispettive percentuali 
 	 */
-	//se location == null
 	private HashMap<String, Float> general() {
 
 		int no = 0;

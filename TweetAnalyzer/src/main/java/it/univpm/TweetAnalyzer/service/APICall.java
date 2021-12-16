@@ -105,6 +105,7 @@ public class APICall implements APICallService {
 		}
 		for(int i=0; i<statuses.size(); i++) {
 			JSONObject tweet = (JSONObject) statuses.get(i);
+			
 			//TWEET INFO
 			LocalDate tweetDate = this.parseData((String) tweet.get("created_at"));
 			Long tweetId = (Long) tweet.get("id");

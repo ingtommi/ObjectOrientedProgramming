@@ -21,7 +21,7 @@ public class WrongMethodException extends Exception {
 	}
 
 	/**
-	 * @param message sta ad indicare il messaggio di errore
+	 * @param message indica il messaggio di errore
 	 */
 	public WrongMethodException(String message) {
 		super(message);
