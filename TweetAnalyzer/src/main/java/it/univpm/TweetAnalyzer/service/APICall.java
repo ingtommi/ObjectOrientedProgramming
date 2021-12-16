@@ -23,6 +23,7 @@ import org.json.simple.parser.ParseException;
 
 /**
  * Questa classe implementa l'interfaccia APICallService
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
@@ -57,13 +58,13 @@ public class APICall implements APICallService {
 
 
 	/**
-	 * Metodo get che fa ritornare una lista di tweets
+	 * Metodo get che ritorna una lista di tweets
 	 */
 	@Override
 	public ArrayList<Tweet> getTweets() { return tweets; }
 
 	/**
-	 * Metodo get che fa ritornare una lista degli utenti
+	 * Metodo get che ritorna una lista degli utenti
 	 */
 	@Override
 	public ArrayList<User> getUsers() { return users; }
@@ -101,7 +102,6 @@ public class APICall implements APICallService {
 
 	/**
 	 * Metodo che permette di salvare i dati trovati
-	 * @return una stringa con conferma di salvataggio avvenuto
 	 */
 	@Override
 	public String saveData() throws WrongMethodException, IsEmptyException {
@@ -167,7 +167,7 @@ public class APICall implements APICallService {
 
 
 	/**
-	 * Metodo che permette di convertire la stringa di data in formato LocalDate
+	 * Metodo che permette di convertire la stringa della data in formato LocalDate
 	 */
 	@Override
 	public LocalDate parseData(String created_at) {

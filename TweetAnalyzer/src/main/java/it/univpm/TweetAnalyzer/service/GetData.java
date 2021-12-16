@@ -11,6 +11,7 @@ import it.univpm.TweetAnalyzer.model.User;
 /**
  * Questa classe implementa l'interfaccia GetDataService e
  * permete di visualizzare i dati e metadati
+ * 
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  *
@@ -18,7 +19,7 @@ import it.univpm.TweetAnalyzer.model.User;
 public class GetData implements GetDataService{
 
 	/**
-	 * Attribuiti di GetData: lista di tweets e utenti
+	 * Attribuiti della classe GetData
 	 */
 	private ArrayList<Tweet> tweets;
 	private ArrayList<User> users;
@@ -26,20 +27,18 @@ public class GetData implements GetDataService{
 	public GetData() {}
 
 	/**
-	 * Questo è il costruttore di GetData
-	 * @param tweets: lista dei tweet
-	 * @param users: lista di utenti
+	 * Questo è il costruttore
+	 * 
+	 * @param tweets è la lista dei tweet
+	 * @param users è la lista di utenti
 	 */
 	public GetData(ArrayList<Tweet> tweets, ArrayList<User> users) {
 		this.tweets = tweets;
 		this.users = users;
 	}
 
-
-
 	/**
 	 * Questo metodo permette di visualizzare i metadati 
-	 * @return JSONObject contenente i metadati
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
@@ -72,7 +71,6 @@ public class GetData implements GetDataService{
 
 	/**
 	 * Questo metodo permette di visualizzare i dati
-	 * @return JSONObject contentente i dati 
 	 */
 	@Override
 	@SuppressWarnings("unchecked")

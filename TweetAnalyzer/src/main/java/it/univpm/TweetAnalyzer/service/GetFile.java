@@ -13,6 +13,7 @@ import it.univpm.TweetAnalyzer.model.Location;
 
 /**
  * Questa classe implementa l'interfaccia GetFileService
+ *
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  * 
@@ -20,15 +21,14 @@ import it.univpm.TweetAnalyzer.model.Location;
 public class GetFile implements GetFileService {
 
 	/**
-	 * Attributo di GetFile: lista di città
+	 * Attributo di GetFile
 	 */
 	ArrayList<Location> cityList = new ArrayList<Location>();
 
 	public GetFile() {}
 
 	/**
-	 * Metodo che permette di leggere da file contenente tutti i comuni italiani con le rispettive province e regioni 
-	 * e inserire in una lista
+	 * Metodo che permette di leggere da file e inserire in una lista tutti i comuni italiani con le rispettive province e regioni 
 	 */
 	@Override
 	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
