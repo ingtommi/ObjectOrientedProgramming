@@ -26,6 +26,7 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Formato restituto](#form)
 * [Eccezioni](#eccez)
 * [Test](#test)
+* [Documentazione](#doc)
 * [Autori](#autor)
 
 <a name="intro"></a>
@@ -251,6 +252,11 @@ Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabil
 * **Test 1:** controllo correttezza costruzione url
 * **Test 2:** controllo correttezza parsing della data
 * **Test 3:** controllo correttezza lancio eccezione WrongMethodException
+
+<a name="doc"></a>
+## Documentazione :abc:
+
+Tutto il progetto è documentato in [javadoc](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/TweetAnalyzer/doc).
 
 <a name="autor"></a>
 ## Autori :busts_in_silhouette:
