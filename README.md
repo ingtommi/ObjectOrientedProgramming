@@ -89,7 +89,7 @@ N° | Parametri | Tipo | Richiesto
 
 <a name=1></a>
 ### 1. Metadati
-```
+```json
 {
     "list": {
         "tweet": {
@@ -121,7 +121,7 @@ Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe c
 ### 3. Dati
 
 Dati relativi ad esempio precedente:
-```
+```json
 {
     "list": [
         {
@@ -161,7 +161,7 @@ Stesso formato dei [dati](#3) con solo tweet provenienti dal luogo indicato.
 ### 6. Statistiche giorno
 
 Tra default e caso specifico non cambia nulla se non i giorni indicati:
-```
+```json
 {
     "Total tweets downloaded": 5.0
     "Tweets written on 2021-12-15": 5.0,
@@ -175,7 +175,7 @@ Tra default e caso specifico non cambia nulla se non i giorni indicati:
 ### 7. Statistiche luogo
 
 Default:
-```
+```json
 {
     "Total tweets downloaded": 5.0
     "Tweets with no location": 2.0,
@@ -190,7 +190,7 @@ Default:
 **NOTA:** *Si ha NO LOCATION se nè il tweet nè l'utente hanno fornito informazioni sulla posizione, mentre UNPROCESSABLE LOCATION comprende i tweet in cui la posizione non corrisponde a "Italia", "Italy" oppure nomi di comuni e regioni in **lingua italiana**. Questo significa che **Rome** o **Milan** andranno in questo gruppo!*
 
 Specifico:
-```
+```json
 {
     "Total tweets downloaded": 5.0,
     "Tweets written in Italia": 3.0,
@@ -203,7 +203,7 @@ Specifico:
 ### 8. Statistiche hashtag
 
 Default:
-```
+```json
 {
     "Total tweets downloaded": 5.0
     "Min hashtags per tweet": 2.0,
@@ -215,7 +215,7 @@ Default:
 **NOTA:** *Per problemi dI Twitter può accadere che il valore minimo degli hashtag sia 0 anche se impossibile visto che i tweet sono stati ricercati in base ad almeno 1 hashtag. Purtroppo questo non dipende da noi!*
 
 Specifico:
-```
+```json
 {
     "Total tweets downloaded": 5.0,
     "Tweets containing #univpm": 0.0,
@@ -243,6 +243,12 @@ Oltre alle eccezioni standard di Java sono state gestite le seguenti *eccezioni 
 
 <a name="test"></a>
 ## Test
+
+Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabili [qui](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/test/java/it/univpm/TweetAnalyzer/tests/Tests.java). Nel dettaglio:
+
+* **Test 1:** controllo correttezza costruzione url
+* **Test 2:** controllo correttezza parsing della data
+* **Test 3:** controllo correttezza lancio eccezione WrongMethodException
 
 <a name="autor"></a>
 ## Autori
