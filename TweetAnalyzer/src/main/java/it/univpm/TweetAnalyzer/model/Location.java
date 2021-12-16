@@ -1,5 +1,4 @@
 package it.univpm.TweetAnalyzer.model;
-
 /**
  * Questa classe rappresenta il luogo dove si trova l'utente
  * 
