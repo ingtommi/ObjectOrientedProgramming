@@ -17,7 +17,7 @@ Viene infatti utilizzata un API proxy fornita dal professore che permette di evi
 
 Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritti durante gli *ultimi 7 giorni*. Per ulteriori informazioni visitare questo [sito](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) e consultare i piani disponibili.
 
-# Contenuti
+# Contenuti :open_file_folder:
 
 * [Introduzione](#intro)
 * [Configurazione](#config)
@@ -26,6 +26,7 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Formato restituto](#form)
 * [Eccezioni](#eccez)
 * [Test](#test)
+* [Documentazione](#doc)
 * [Autori](#autor)
 
 <a name="intro"></a>
@@ -75,7 +76,7 @@ N° | Tipo | Rotta | Descrizione
 [8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
 
 <a name="param"></a>
-## Parametri :open_file_folder:
+## Parametri :pencil:
 
 N° | Parametri | Tipo | Richiesto
 ----- | ------------ | -------------------- | ----------------------
@@ -251,6 +252,11 @@ Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabil
 * **Test 1:** controllo correttezza costruzione url
 * **Test 2:** controllo correttezza parsing della data
 * **Test 3:** controllo correttezza lancio eccezione WrongMethodException
+
+<a name="doc"></a>
+## Documentazione :abc:
+
+Tutto il progetto è documentato in [javadoc](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/TweetAnalyzer/doc).
 
 <a name="autor"></a>
 ## Autori :busts_in_silhouette:
