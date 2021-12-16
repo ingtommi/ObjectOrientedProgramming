@@ -13,7 +13,7 @@ import it.univpm.TweetAnalyzer.model.Location;
 import it.univpm.TweetAnalyzer.service.APICall;
 
 /**
- * In questa classe sono contenuti dei test per verificare il corretto fuznionamento di alcune parti del programma
+ * In questa classe sono contenuti dei test per verificare il corretto funzionamento di alcune parti del programma
  * @author Marco Ciampichetti
  * @author Tommaso Fava
  */
