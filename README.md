@@ -24,9 +24,9 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Rotte](#rotte)
 * [Parametri](#param)
 * [Formato restituto](#form)
+* [Esempi](#ex)
 * [Eccezioni](#eccez)
 * [Test](#test)
-* [Esempi](#ex)
 * [Documentazione](#doc)
 * [Autori](#autor)
 
@@ -229,6 +229,11 @@ Specifico:
 
 **NOTA:** *la parola da ricercare va inserira senza # in questo caso!*
 
+<a name="ex"></a>
+## Esempi :window:
+
+Potete trovare esempi di funzionamento [qui](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/examples).
+
 <a name="eccez"></a>
 ## Eccezioni :x:
 
@@ -255,11 +260,6 @@ Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabil
 * **Test 1:** controllo correttezza costruzione url
 * **Test 2:** controllo correttezza parsing della data
 * **Test 3:** controllo correttezza lancio eccezione WrongMethodException
-
-<a name="ex"></a>
-## Esempi :window:
-
-Potete trovare esempi di funzionamento [qui](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/examples).
 
 <a name="doc"></a>
 ## Documentazione :abc:
