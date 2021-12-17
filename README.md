@@ -192,7 +192,7 @@ Default:
 }
 ```
 
-**NOTA:** *Si ha NO LOCATION se nè il tweet nè l'utente hanno fornito informazioni sulla posizione, mentre UNPROCESSABLE LOCATION comprende i tweet in cui la posizione non corrisponde a "Italia", "Italy" oppure nomi di comuni e regioni in **lingua italiana**. Questo significa che **Rome** o **Milan** andranno in questo gruppo!*
+**NOTA:** *Si ha NO LOCATION se nè il tweet nè l'utente hanno fornito informazioni sulla posizione, mentre UNPROCESSABLE LOCATION comprende i tweet in cui la posizione non corrisponde a "Italia", "Italy" oppure nomi di comuni e regioni in **lingua italiana**.*
 
 Specifico:
 ```json
