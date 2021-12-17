@@ -40,8 +40,8 @@ public class APICall implements APICallService {
 	private String lang;
 	private String met;
 
-	ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-	ArrayList<User> users = new ArrayList<User>();
+	private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+	private ArrayList<User> users = new ArrayList<User>();
 
 	/**
 	 * Costruttore
@@ -104,7 +104,6 @@ public class APICall implements APICallService {
 		else { 
 			throw new WrongMethodException("ERROR: wrong method!");
 		} 
-		System.out.println(api);
 		return api;
 	}
 

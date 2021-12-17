@@ -23,7 +23,7 @@ public class GetFile implements GetFileService {
 	/**
 	 * Attributo di GetFile
 	 */
-	ArrayList<Location> cityList = new ArrayList<Location>();
+	private ArrayList<Location> cityList = new ArrayList<Location>();
 
 	/**
 	 * Costruttore di default
@@ -34,9 +34,18 @@ public class GetFile implements GetFileService {
 	 * Metodo che permette di leggere da file e inserire in una lista tutti i comuni italiani con le rispettive province e regioni 
 	 */
 	@Override
-	public ArrayList<Location> getFile() throws FileNotFoundException, IOException, ParseException {
+	public ArrayList<Location> getFile() {
 		JSONParser parser = new JSONParser();
-		Object object = parser.parse(new FileReader("listaComuni.json"));
+		Object object = null;
+		try {
+			object = parser.parse(new FileReader("listaComuni.json"));
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		JSONObject jsonObj = (JSONObject) object;
 		JSONArray list =  (JSONArray) jsonObj.get("Location");
 		if (list != null) { 

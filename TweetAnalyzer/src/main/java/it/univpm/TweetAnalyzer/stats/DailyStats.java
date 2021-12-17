@@ -21,9 +21,9 @@ public class DailyStats implements Stats {
 	 */
 	private LocalDate date;
 	private ArrayList<Tweet> tweets;
-	int day1 = 0;
-	int day2 = 0;
-	int day3 = 0;
+	private int day1 = 0;
+	private int day2 = 0;
+	private int day3 = 0;
 
 	/**
 	 * Costruttore
@@ -48,10 +48,10 @@ public class DailyStats implements Stats {
 			if(tweet.getDatatime().compareTo(date)==0) {
 				day1++;
 			}
-			else if(tweet.getDatatime().compareTo(date)==1) {
+			else if(tweet.getDatatime().compareTo(date.minusDays(1))==0) {
 				day2++;
 			}
-			else if(tweet.getDatatime().compareTo(date)==2) {
+			else if(tweet.getDatatime().compareTo(date.minusDays(2))==0) {
 				day3++;
 			}
 		}

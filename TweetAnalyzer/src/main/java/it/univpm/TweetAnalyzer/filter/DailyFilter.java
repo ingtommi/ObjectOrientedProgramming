@@ -40,7 +40,6 @@ public class DailyFilter implements Filter {
 	 * @return un JSONObject contenente i tweet scritti nel giorno scelto e la lista dei tweet di quel giorno
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public JSONObject filter() {
 
 		JSONObject data = new JSONObject();

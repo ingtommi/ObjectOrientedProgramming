@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Classe che estende Model e 
+ * Questa classe estende Model e 
  * modella il tweet che si ottiene nella ricerca
  * 
  * @author Marco Ciampichetti

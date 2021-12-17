@@ -19,7 +19,7 @@ public class HashStats implements Stats{
 	/**
 	 * Attributi di hashtag e tweets
 	 */
-	String hashtag;
+	private String hashtag;
 	private ArrayList<Tweet> tweets;
 
 	/**
@@ -53,7 +53,6 @@ public class HashStats implements Stats{
 
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
-	 * Caso in cui viene inserito il parametro
 	 * 
 	 * @return HashMap contenente i tweets scaricati, i tweets contenenti l'hastag scelto e la percentuale
 	 */
@@ -77,7 +76,6 @@ public class HashStats implements Stats{
 
 	/**
 	 * Questo metodo serve per memorizzare in una HashMap i tweets contenenti uno specifico hashtag
-	 * Caso di default in cui non viene inserito il parametro
 	 * 
 	 * @return HashMap contenente i tweets scaricati, il numero massimo e minimo degli hashtag per tweet e la loro media
 	 */

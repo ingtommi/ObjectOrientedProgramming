@@ -42,7 +42,6 @@ public class GeoFilter implements Filter {
 	 * @return un JSONObject contenente la lista dei tweet localizzati nel luogo selezionato
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public JSONObject filter() {
 
 		JSONObject loc = new JSONObject();

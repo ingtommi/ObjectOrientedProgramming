@@ -2,13 +2,13 @@
     "list": {
         "tweet": {
             "hashtags": "ArrayList<String>",
-            "created_at": "String",
+            "created_at": "LocalDate",
             "location": "String",
             "id": "long"
         },
         "user": {
             "name": "String",
-            "created_at": "String",
+            "created_at": "LocalDate",
             "location": "String",
             "id": "long"
         }

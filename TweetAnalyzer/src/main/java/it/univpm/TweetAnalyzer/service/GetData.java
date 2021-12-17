@@ -44,7 +44,6 @@ public class GetData implements GetDataService{
 	 * Questo metodo permette di visualizzare i metadati 
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public JSONObject seeMeta() {
 
 		JSONObject meta = new JSONObject();
@@ -53,13 +52,13 @@ public class GetData implements GetDataService{
 		JSONObject tweet = new JSONObject();
 		JSONObject user = new JSONObject();
 
-		tweet.put("created_at","String");
+		tweet.put("created_at","LocalDate");
 		tweet.put("id","long");
 		tweet.put("location","String");
 		tweet.put("hashtags","ArrayList<String>");
 		prop.put("tweet",tweet);
 
-		user.put("created_at","String");
+		user.put("created_at","LocalDate");
 		user.put("id","long");
 		user.put("name","String");
 		user.put("location","String");
@@ -76,7 +75,6 @@ public class GetData implements GetDataService{
 	 * Questo metodo permette di visualizzare i dati
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public JSONObject seeData() {
 
 		JSONObject data = new JSONObject();
