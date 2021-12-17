@@ -26,6 +26,7 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Formato restituto](#form)
 * [Eccezioni](#eccez)
 * [Test](#test)
+* [Esempi](#ex)
 * [Documentazione](#doc)
 * [Autori](#autor)
 
@@ -226,6 +227,8 @@ Specifico:
 }
 ```
 
+**NOTA:** *la parola da ricercare va inserira senza # in questo caso!*
+
 <a name="eccez"></a>
 ## Eccezioni :x:
 
@@ -253,6 +256,11 @@ Sfruttando il framework JUnit sono stati implementati 3 test unitari consultabil
 * **Test 2:** controllo correttezza parsing della data
 * **Test 3:** controllo correttezza lancio eccezione WrongMethodException
 
+<a name="ex"></a>
+## Esempi :window:
+
+Potete trovare esempi di funzionamento [qui](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/examples).
+
 <a name="doc"></a>
 ## Documentazione :abc:
 
@@ -264,7 +272,7 @@ Tutto il progetto è documentato in [javadoc](https://github.com/ingtommi/Object
 Progetto realizzato da
 
 * **[Tommaso Fava](https://github.com/ingtommi):** controller, service, stats, readme
-* **[Marco Ciampichetti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
+* **[Marco Ciampicheti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
 
 Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate. Tutte le specifiche richieste sono state rispettate e sono stati introdotti anche dei **plus** come ad esempio l'*associazione tra il luogo del tweet e i comuni italiani* leggendo da [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/listaComuni.json) o la *statistica per hashtag*.
 
