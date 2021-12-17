@@ -1,1 +1,6 @@
-{"Percentage":20.0,"Tweets containing #travel":2.0,"Total tweets downloaded":10.0}
+{
+    "Average hashtags per tweet": 3.1,
+    "Min hashtags per tweet": 0.0,
+    "Max hashtags per tweet": 7.0,
+    "Total tweets downloaded": 10.0
+}

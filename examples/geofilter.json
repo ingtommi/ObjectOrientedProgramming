@@ -1,1 +1,22 @@
-{"tweets written in Italy":[{"hashtags":["Ford","guidaautonoma"],"created_at":"2021-12-17","location":"italy","id":1471761602353500161},{"hashtags":["Ford","guidaautonoma"],"created_at":"2021-12-17","location":"italy","id":1471761352670818304}]}
+{
+    "tweets written in Italy": [
+        {
+            "hashtags": [
+                "Ford",
+                "guidaautonoma"
+            ],
+            "created_at": "2021-12-17",
+            "location": "italy",
+            "id": 1471761602353500161
+        },
+        {
+            "hashtags": [
+                "Ford",
+                "guidaautonoma"
+            ],
+            "created_at": "2021-12-17",
+            "location": "italy",
+            "id": 1471761352670818304
+        }
+    ]
+}
