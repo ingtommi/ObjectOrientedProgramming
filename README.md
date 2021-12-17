@@ -275,7 +275,7 @@ Tutto il progetto è documentato in [javadoc](https://github.com/ingtommi/Object
 Progetto realizzato da
 
 * **[Tommaso Fava](https://github.com/ingtommi):** controller, service, stats, readme
-* **[Marco Ciampicheti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
+* **[Marco Ciampichetti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
 
 Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate. Tutte le specifiche richieste sono state rispettate e sono stati introdotti anche dei **plus** come ad esempio l'*associazione tra il luogo del tweet e i comuni italiani* leggendo da [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/listaComuni.json) o la *statistica per hashtag*.
 
