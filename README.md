@@ -59,6 +59,7 @@ fatto questo si può lanciare il progetto come SpringBoot application da un IDE 
 ```
 http://localhost:8080
 ```
+come da [video](#ex).
 
 **NOTA:** *la porta può essere modificata a piacere variando questo [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/src/main/resources/application.properties)!*
 
@@ -233,6 +234,8 @@ Specifico:
 ## Esempi :window:
 
 Potete trovare esempi di funzionamento [qui](https://github.com/ingtommi/ObjectOrientedProgramming/tree/main/examples).
+
+All'interno della cartella trovate anche questo [video](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/examples/video.mkv) che mostra il funzionamento del programma.
 
 <a name="eccez"></a>
 ## Eccezioni :x:
