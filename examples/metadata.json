@@ -1,0 +1,1 @@
+{"list":{"tweet":{"hashtags":"ArrayList<String>","created_at":"String","location":"String","id":"long"},"user":{"name":"String","created_at":"String","location":"String","id":"long"}}}
