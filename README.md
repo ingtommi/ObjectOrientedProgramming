@@ -23,7 +23,7 @@ Inoltre, va precisato come la ricerca venga effettuata soltanto sui tweet scritt
 * [Configurazione](#config)
 * [Rotte](#rotte)
 * [Parametri](#param)
-* [Formato restituto](#form)
+* [Formato restituito](#form)
 * [Esempi](#ex)
 * [Eccezioni](#eccez)
 * [Test](#test)
@@ -75,7 +75,7 @@ N° | Tipo | Rotta | Descrizione
 [5](#5) | ` GET ` | `/tweet/filter/geo` | *restituisce un JSONObject contenente i tweet postati dal luogo inserito*
 [6](#6) | ` GET ` | `/tweet/stats/day` | *restituisce una HashMap con il numero di tweet postati nel giorno inserito e nei due precedenti*
 [7](#7) | ` GET ` | `/tweet/stats/geo` | *restituisce una HashMap con il numero di tweet postati dal luogo inserito o dall'Italia*
-[8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito*
+[8](#8) | ` GET ` | `/tweet/stats/hash` | *restituisce una HashMap con il numero di tweet contenenti l'hashtag inserito o massimo, minimo e media di hashtag per tweet*
 
 <a name="param"></a>
 ## Parametri :pencil:
@@ -99,13 +99,13 @@ N° | Parametri | Tipo | Richiesto
     "list": {
         "tweet": {
             "hashtags": "ArrayList<String>",
-            "created_at": "String",
+            "created_at": "LocalDate",
             "location": "String",
             "id": "long"
         },
         "user": {
             "name": "String",
-            "created_at": "String",
+            "created_at": "LocalDate",
             "location": "String",
             "id": "long"
         }
@@ -217,7 +217,7 @@ Default:
 }
 ```
 
-**NOTA:** *Per problemi dI Twitter può accadere che il valore minimo degli hashtag sia 0 anche se impossibile visto che i tweet sono stati ricercati in base ad almeno 1 hashtag. Purtroppo questo non dipende da noi!*
+**NOTA:** *Per problemi di Twitter può accadere che il valore minimo degli hashtag sia 0 anche se impossibile visto che i tweet sono stati ricercati in base ad almeno 1 hashtag. Purtroppo questo non dipende da noi!*
 
 Specifico:
 ```json
@@ -228,7 +228,7 @@ Specifico:
 }
 ```
 
-**NOTA:** *la parola da ricercare va inserira senza # in questo caso!*
+**NOTA:** *la parola da ricercare va inserita senza # in questo caso!*
 
 <a name="ex"></a>
 ## Esempi :window:
@@ -275,7 +275,7 @@ Tutto il progetto è documentato in [javadoc](https://github.com/ingtommi/Object
 Progetto realizzato da
 
 * **[Tommaso Fava](https://github.com/ingtommi):** controller, service, stats, readme
-* **[Marco Ciampicheti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
+* **[Marco Ciampichetti](https://github.com/MarcoCiamp):** model, filter, exception, javadoc, test
 
 Il progetto è stato sviluppato in circa due settimane di lavoro costante nelle quali numerose commit e revisioni di coppia hanno permesso ad entrambi di avere una chiara idea su tutte le scelte adottate. Tutte le specifiche richieste sono state rispettate e sono stati introdotti anche dei **plus** come ad esempio l'*associazione tra il luogo del tweet e i comuni italiani* leggendo da [file](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/TweetAnalyzer/listaComuni.json) o la *statistica per hashtag*.
 
