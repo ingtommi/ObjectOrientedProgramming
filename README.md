@@ -1,5 +1,5 @@
 <p align="center">
-<img src="logo.jpg" width="20%" height="20%">
+<img src="logo.jpg" width="40%" height="40%">
 
 <div align="center">
   
@@ -117,7 +117,7 @@ N° | Parametri | Tipo | Richiesto
 
 Esempio con *un solo hashtag* (in questo caso **{method} = or** ma non sarebbe cambiato nulla con **and**):
 
-![alt_text](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/photo/get.jpg?raw=true)
+![alt_text](https://github.com/ingtommi/ObjectOrientedProgramming/blob/main/image/get.jpg?raw=true)
 
 **NOTA:** *Gli **hashtag** vanno inseriti con il # davanti, la **lingua** secondo questi [codici](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)!*
 
