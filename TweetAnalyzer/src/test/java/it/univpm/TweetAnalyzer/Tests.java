@@ -1,4 +1,4 @@
-package it.univpm.TweetAnalyzer.tests;
+package it.univpm.TweetAnalyzer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
