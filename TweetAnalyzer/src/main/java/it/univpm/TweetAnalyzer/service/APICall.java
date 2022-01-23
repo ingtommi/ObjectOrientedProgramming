@@ -53,7 +53,7 @@ public class APICall implements APICallService {
 	 * @param count numero di risultati che si vuole visualizzare
 	 */
 	public APICall(String ht1, String ht2, String ht3, String met, String lang, int count) {
-		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+","");
+		this.ht1 = ht1.replace("#","%23").replaceAll("\\s+",""); //vengono sostituiti # ed eventuali spazi
 		if(ht2!=null) {
 			this.ht2 = ht2.replace("#","%23").replaceAll("\\s+","");
 		}
@@ -133,7 +133,7 @@ public class APICall implements APICallService {
 			e.printStackTrace();
 		}
 
-		JSONArray statuses = (JSONArray) obj.get("statuses");
+		JSONArray statuses = (JSONArray) obj.get("statuses"); //prelevo solo informazioni utili
 		if(statuses.isEmpty()) {
 			throw new IsEmptyException("ERROR: no tweets found!");
 		}
